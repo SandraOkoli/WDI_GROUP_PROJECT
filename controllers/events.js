@@ -5,9 +5,18 @@ function eventsIndex(req, res){
     .find()
     .exec()
     .then(events => res.status(200).json(events))
-    .catch(() => res.status(500).json({ message: 'Something went wrong.' }));
+    .catch(err => res.status(500).json(err));
+}
+
+function eventsCreate(req, res){
+  Event
+    .create(req.body.event)
+    .then(event => res.status(201).json(event))
+    .catch(err => res.status(500).json(err));
+
 }
 
 module.exports = {
-  index: eventsIndex
+  index: eventsIndex,
+  create: eventsCreate
 };

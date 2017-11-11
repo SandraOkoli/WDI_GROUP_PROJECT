@@ -11,6 +11,7 @@ router.route('/login')
   .post(authentications.login);
 
 router.route('/events')
-  .get(events.index);
+  .get(events.index)
+  .post(events.create);
 
 module.exports = router;
