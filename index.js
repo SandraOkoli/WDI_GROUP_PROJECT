@@ -2,16 +2,18 @@ const express         = require('express');
 const morgan          = require('morgan');
 const bodyParser      = require('body-parser');
 const router          = require('./config/routes');
-const { db, port }    = require('./config/enviroment');
+//const { db, port }    = require('./config/environment');
+const config     = require('./config/environment');
 const customResponses = require('./lib/customResponses');
 const errorHandler    = require('./lib/errorHandler');
 
 const app             = express();
-const enviroment      = app.get('env');
+//const environment      = app.get('env');
 
 const mongoose        = require('mongoose');
 mongoose.Promise      = require('bluebird');
-mongoose.connect(db[enviroment], { useMongoClient: true });
+//mongoose.connect(db[environment], { useMongoClient: true });
+mongoose.connect(config.db);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -24,6 +26,6 @@ app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Express is up and running on port: ${port}`));
+app.listen(config.port, () => console.log(`Express is up and running on port: ${config.port}`));
 
 module.exports = app;
