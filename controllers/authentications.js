@@ -9,7 +9,7 @@ function authenticationsRegister(req, res) {
       const token = jwt.sign({ userId: user.id }, secret, {expiresIn: '1hr'});
 
       return res.status(201).json({
-        message: `Welcome ${user.firstName}`,
+        message: `Welcome ${user.firstName}!`,
         token,
         user
       });
@@ -19,7 +19,29 @@ function authenticationsRegister(req, res) {
     }));
 }
 
+function authenticationsLogin(req,res){
+  User
+    .findOne({ email: req.body.email })
+    .exec()
+    .then(user=> {
+      if (!user || !user.validatePassword(req.body.password)) res.status(401).json({
+        message: 'Unauthorised.'
+      });
+
+      const token = jwt.sign({ userId: user.id }, secret, {expiresIn: '1hr'});
+
+      return res.status(200).json({
+        message: `Welcome back ${user.firstName}!`,
+        token,
+        user
+      });
+    })
+    .catch(()=> res.status(500).json({
+      message: 'Something went wrong!'
+    }));
+}
 
 module.exports = {
-  register: authenticationsRegister
+  register: authenticationsRegister,
+  login: authenticationsLogin
 };
