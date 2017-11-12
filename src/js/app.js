@@ -1,2 +1,6 @@
 angular
-  .module('outApp', []);
+  .module('outApp', [
+    'ui.router',
+    'ngResource',
+    'satellizer'
+  ]);
