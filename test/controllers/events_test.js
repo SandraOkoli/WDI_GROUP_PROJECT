@@ -272,7 +272,146 @@ describe('Event tests', ()=> {
 
   });
   describe('PUT /api/events/:id', () => {
-    // update test
+    let testEvent;
+
+    beforeEach(done => {
+      Event.collection.drop();
+      done();
+    });
+
+    beforeEach(done => {
+      Event.create({
+        name: 'Party',
+        location: {
+          lat: 32,
+          lng: 34
+        },
+        type: 'stag',
+        description: 'stag party',
+        dateTime: '34632',
+        owner: 'Dave',
+        attendees: 'Sally'
+      })
+        .then(eventData => {
+          testEvent = eventData;
+          done();
+        })
+        .catch(done);
+    });
+
+    it('Should be possible to update the name of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Updated party',
+          location: {
+            lat: 32,
+            lng: 34
+          },
+          type: 'stag',
+          description: 'stag party',
+          dateTime: '34632',
+          owner: 'Dave',
+          attendees: 'Sally'
+        })
+        .expect(200, done);
+    });
+
+    it('Should be possible to update the location of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Party',
+          location: {
+            lat: 42,
+            lng: 50
+          },
+          type: 'stag',
+          description: 'stag party',
+          dateTime: '34632',
+          owner: 'Dave',
+          attendees: 'Sally'
+        })
+        .expect(200, done);
+    });
+
+    it('Should be possible to update the type of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Party',
+          location: {
+            lat: 32,
+            lng: 34
+          },
+          type: 'night of freedom',
+          description: 'stag party',
+          dateTime: '34632',
+          owner: 'Dave',
+          attendees: 'Sally'
+        })
+        .expect(200, done);
+    });
+
+    it('Should be possible to update the description of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Party',
+          location: {
+            lat: 32,
+            lng: 34
+          },
+          type: 'stag',
+          description: 'Mike\'s stag do!',
+          dateTime: '34632',
+          owner: 'Dave',
+          attendees: 'Sally'
+        })
+        .expect(200, done);
+    });
+
+    it('Should be possible to update the date/time of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept','application/json')
+        .send({
+          name: 'Party',
+          location: {
+            lat: 32,
+            lng: 34
+          },
+          type: 'stag',
+          description: 'stag party',
+          dateTime: '36632',
+          owner: 'Dave',
+          attendees: 'Sally'
+        })
+        .expect(200, done);
+    });
+
+    it('Should be possible to update the attendees of an event', done => {
+      api
+        .put(`/api/events/${testEvent.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Party',
+          location: {
+            lat: 32,
+            lng: 34
+          },
+          type: 'stag',
+          description: 'stag party',
+          dateTime: '34632',
+          owner: 'Dave',
+          attendees: 'Sally, Mike, Nathan'
+        })
+        .expect(200, done);
+    });
 
 
 

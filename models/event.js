@@ -11,7 +11,8 @@ const eventSchema = new mongoose.Schema({
   description: { type: String },
   dateTime: { type: Date, required: true },
   owner: { type: String, required: true },
-  attendees: { type: String }
+  attendees: { type: String } //we may need to change this to an array of users!
+  //add comments here!
 });
 
 module.exports = mongoose.model('Event', eventSchema);
