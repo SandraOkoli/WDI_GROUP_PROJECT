@@ -145,35 +145,14 @@ describe('Event tests', ()=> {
         });
     });
   });
-});
 
-describe('POST /api/events', () => {
-  it('should return a 201 response', done => {
-    api
-      .post('/api/events')
-      .set('Accept', 'application/json')
-      .send({
-        name: 'Party',
-        location: {
-          lat: 32,
-          lng: 34
-        },
-        type: 'stag',
-        description: 'stag party',
-        dateTime: '34632',
-        owner: 'Dave',
-        attendees: 'Sally'
 
-      })
-      .expect(201, done);
-  });
-
-  it('should create an event', done => {
-    api
-      .post('/api/events')
-      .set('Accept', 'application/json')
-      .send({
-        event: {
+  describe('POST /api/events', () => {
+    it('should return a 201 response', done => {
+      api
+        .post('/api/events')
+        .set('Accept', 'application/json')
+        .send({
           name: 'Party',
           location: {
             lat: 32,
@@ -184,45 +163,96 @@ describe('POST /api/events', () => {
           dateTime: '34632',
           owner: 'Dave',
           attendees: 'Sally'
-        }
+
+        })
+        .expect(201, done);
+    });
+
+    it('should create an event', done => {
+      api
+        .post('/api/events')
+        .set('Accept', 'application/json')
+        .send({
+          event: {
+            name: 'Party',
+            location: {
+              lat: 32,
+              lng: 34
+            },
+            type: 'stag',
+            description: 'stag party',
+            dateTime: '34632',
+            owner: 'Dave',
+            attendees: 'Sally'
+          }
+        })
+        .end((err, res) => {
+          const event = res.body;
+
+          expect(event)
+            .to.have.property('_id')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('name')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('location')
+            .and.to.be.a('object');
+          expect(event.location)
+            .to.have.property('lat')
+            .and.to.be.a('number');
+          expect(event.location)
+            .to.have.property('lng')
+            .and.to.be.a('number');
+          expect(event)
+            .to.have.property('type')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('description')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('dateTime')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('owner')
+            .and.to.be.a('string');
+          expect(event)
+            .to.have.property('attendees')
+            .and.to.be.a('string');
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/events/:id', () => {
+
+    let event;
+
+    beforeEach(done => {
+      Event.create({
+        name: 'Party',
+        location: {
+          lat: 32,
+          lng: 34
+        },
+        type: 'stag',
+        description: 'stag party',
+        dateTime: '34632',
+        owner: 'Dave',
+        attendees: 'Sally'
       })
-      .end((err, res) => {
-        const event = res.body;
-
-        expect(event)
-          .to.have.property('_id')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('name')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('location')
-          .and.to.be.a('object');
-
-        expect(event)
-          .to.have.property('type')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('description')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('dateTime')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('owner')
-          .and.to.be.a('string');
-
-        expect(event)
-          .to.have.property('attendees')
-          .and.to.be.a('string');
-
-        done();
-      });
+        .then(eventData => {
+          event = eventData;
+          done();
+        })
+        .catch(done);
+    });
+    it('should return a 200 response', done => {
+      api
+        .get(`/api/events/${event.id}`)
+        .set('Accept', 'application/json')
+        .expect(200, done);
+    });
   });
 
 });

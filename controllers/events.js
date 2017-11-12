@@ -16,7 +16,23 @@ function eventsCreate(req, res){
 
 }
 
+function eventsShow(req, res){
+  Event
+    .find(req.params.id)
+    .exec()
+    .then(event =>{
+      if(!event){
+        return res.status(404).json({ message: 'Event not Found'});
+      }
+      return res.status(200).json(event);
+    })
+    .catch(err => res.status(500).json(err));
+}
+
+
+
 module.exports = {
   index: eventsIndex,
-  create: eventsCreate
+  create: eventsCreate,
+  show: eventsShow
 };
