@@ -16,7 +16,15 @@ function usersUpdate(req,res){
     .catch(() => res.status(500).json({ message: 'Something went wrong.' }));
 }
 
+function usersDelete(req,res){
+  User
+    .findByIdAndRemove(req.params.id)
+    .then(() => res.sendStatus(200))
+    .catch(() => res.status(500).json({message: 'Something went wrong.'}));
+}
+
 module.exports = {
   show: usersShow,
-  update: usersUpdate
+  update: usersUpdate,
+  delete: usersDelete
 };
