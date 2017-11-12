@@ -253,6 +253,18 @@ describe('Event tests', ()=> {
         .set('Accept', 'application/json')
         .expect(200, done);
     });
+    describe('DELETE /api/events/:id', ()=> {
+
+
+      it('should return a 204 response', done => {
+        api
+          .delete(`/api/events/${eventer.id}`)
+          .set('Accept', 'application/json')
+          .expect(204);
+        done();
+      });
+    });
+
   });
 
 });

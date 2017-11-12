@@ -29,10 +29,18 @@ function eventsShow(req, res){
     .catch(err => res.status(500).json(err));
 }
 
+function eventsDelete(req, res){
+  Event
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() => res.status(204))
+    .catch(err => res.status(500).json(err));
+}
 
 
 module.exports = {
   index: eventsIndex,
   create: eventsCreate,
-  show: eventsShow
+  show: eventsShow,
+  delete: eventsDelete
 };

@@ -15,7 +15,8 @@ router.route('/events')
   .post(events.create);
 
 router.route('/events/:id')
-  .get(events.show);
+  .get(events.show)
+  .delete(events.delete);
 
 
 module.exports = router;
