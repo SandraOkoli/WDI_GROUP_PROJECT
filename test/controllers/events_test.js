@@ -229,6 +229,11 @@ describe('Event tests', ()=> {
     let eventer;
 
     beforeEach(done => {
+      Event.collection.drop();
+      done();
+    });
+
+    beforeEach(done => {
       Event.create({
         name: 'Party',
         location: {
