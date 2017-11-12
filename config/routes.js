@@ -16,6 +16,8 @@ router.route('/events')
 
 router.route('/events/:id')
   .get(events.show)
+  .put(events.update)
+  .patch(events.update)
   .delete(events.delete);
 
 
