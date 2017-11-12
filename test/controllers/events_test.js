@@ -266,5 +266,10 @@ describe('Event tests', ()=> {
     });
 
   });
+  describe('PUT /api/events/:id', () => {
+    // update test
 
+
+
+  });
 });
