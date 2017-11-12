@@ -1,18 +1,22 @@
 const User = require('../models/user');
 
-function usersShow(req, res, next){
+function usersShow(req, res){
   User
     .findById(req.params.id)
     .exec()
-    .then((user) => {
-      if(!user){
-        return res.notFound();
-      }
-      res.json(user);
-    })
-    .catch(next);
+    .then(user => res.status(200).json(user))
+    .catch(() => res.status(500).json({ message: 'Something went wrong.' }));
+}
+
+function usersUpdate(req,res){
+  User
+    .findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .exec()
+    .then(user => res.status(200).json(user))
+    .catch(() => res.status(500).json({ message: 'Something went wrong.' }));
 }
 
 module.exports = {
-  show: usersShow
+  show: usersShow,
+  update: usersUpdate
 };

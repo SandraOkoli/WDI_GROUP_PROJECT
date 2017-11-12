@@ -11,7 +11,8 @@ router.route('/login')
   .post(authentications.login);
 
 router.route('/users/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(users.update);
 
 router.route('/events')
   .get(events.index)
