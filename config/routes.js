@@ -13,6 +13,7 @@ router.route('/login')
 router.route('/users/:id')
   .get(users.show)
   .put(users.update)
+  .patch(users.update)
   .delete(users.delete);
 
 router.route('/events')
