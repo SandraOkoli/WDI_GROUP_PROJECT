@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const authentications = require('../controllers/authentications');
-// const users = require('../controllers/users');
+const users = require('../controllers/users');
 const events = require('../controllers/events');
 
 router.route('/register')
@@ -9,6 +9,9 @@ router.route('/register')
 
 router.route('/login')
   .post(authentications.login);
+
+router.route('/users/:id')
+  .get(users.show);
 
 router.route('/events')
   .get(events.index)
