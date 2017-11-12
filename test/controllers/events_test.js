@@ -226,7 +226,7 @@ describe('Event tests', ()=> {
 
   describe('GET /api/events/:id', () => {
 
-    let event;
+    let eventer;
 
     beforeEach(done => {
       Event.create({
@@ -242,14 +242,14 @@ describe('Event tests', ()=> {
         attendees: 'Sally'
       })
         .then(eventData => {
-          event = eventData;
+          eventer = eventData;
           done();
         })
         .catch(done);
     });
     it('should return a 200 response', done => {
       api
-        .get(`/api/events/${event.id}`)
+        .get(`/api/events/${eventer.id}`)
         .set('Accept', 'application/json')
         .expect(200, done);
     });
