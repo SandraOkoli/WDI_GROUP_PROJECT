@@ -59,8 +59,12 @@ User
         type: 'Birthday',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: 'December 13, 2017 20:00:00',
-        owner: '38938093',
-        attendees: '83098390843'
+        // owner: users[0],
+        attendees: '83098390843',
+        comments: {
+          createdBy: users[0],
+          content: 'Great will be ready in 10 minutes'
+        }
       },{
         name: 'GA Graduation drinks',
         location: {
@@ -70,8 +74,12 @@ User
         type: 'Party',
         description: 'Graduation party',
         dateTime: 'December 15, 2017 19:00:00',
-        owner: '38938093',
-        attendees: '83098390843'
+        // owner: users[0],
+        attendees: '83098390843',
+        comments: {
+          createdBy: users[0],
+          content: 'Great will be ready in 10 minutes'
+        }
       }]);
   })
   .then((events) => console.log(`${events.length} events created`))
