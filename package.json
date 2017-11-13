@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install && gulp deploy",
-    "test": "istanbul cover node_modules/.bin/_mocha"
+    "test": "nyc mocha"
   },
   "author": "Students",
   "license": "ISC",
@@ -58,8 +58,8 @@
     "cors": "^2.8.4",
     "express": "^4.15.2",
     "express-jwt": "^5.3.0",
-    "jsonwebtoken": "^8.1.0",
     "istanbul": "^0.4.5",
+    "jsonwebtoken": "^8.1.0",
     "mocha": "^4.0.1",
     "mongoose": "^4.8.6",
     "morgan": "^1.8.1",
@@ -98,6 +98,7 @@
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "main-bower-files": "^2.13.1",
+    "nyc": "^11.3.0",
     "require-dir": "^0.3.1"
   }
 }

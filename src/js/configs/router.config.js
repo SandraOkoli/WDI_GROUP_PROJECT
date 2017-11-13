@@ -28,5 +28,10 @@ function Router(
       url: '/login',
       templateUrl: 'js/views/authentications/login.html',
       controller: 'loginController as vm'
+    })
+    .state('eventsIndex', {
+      url: '/events',
+      templateUrl: 'js/views/event-index.html',
+      controller: 'eventsIndexController as vm'
     });
 }
