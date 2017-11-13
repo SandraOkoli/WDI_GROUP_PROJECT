@@ -1,9 +1,4 @@
 @import 'variables';
 @import 'googlemap';
 @import 'registerform';
-
-
-h1 {
-  color:$primary-link-color;
-  font-family:$primary-font;
-}
+@import 'loginform';
