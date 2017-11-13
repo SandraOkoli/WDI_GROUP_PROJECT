@@ -9,9 +9,6 @@ router.route('/register')
 
 router.route('/login')
   .post(authentications.login);
-
-router.route('/users')
-  .get(users.index);
   
 router.route('/users/:id')
   .get(users.show)
