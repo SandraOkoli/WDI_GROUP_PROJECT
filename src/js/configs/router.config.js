@@ -38,5 +38,10 @@ function Router(
       url: '/events',
       templateUrl: 'js/views/events/event-index.html',
       controller: 'eventsIndexController as vm'
+    })
+    .state('eventsShow', {
+      url: '/events/:id',
+      templateUrl: 'js/views/events/event-show.html',
+      controller: 'eventsShowController as vm'
     });
 }
