@@ -59,10 +59,10 @@ User
         type: 'Birthday',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: 'December 13, 2017 20:00:00',
-        // owner: users[0],
-        attendees: '83098390843',
+        owner: users[0].id,
+        attendees: users[0].id ,
         comments: {
-          createdBy: users[0],
+          createdBy: users[0].id,
           content: 'Great will be ready in 10 minutes'
         }
       },{
@@ -74,10 +74,10 @@ User
         type: 'Party',
         description: 'Graduation party',
         dateTime: 'December 15, 2017 19:00:00',
-        // owner: users[0],
-        attendees: '83098390843',
+        owner: users[0].id,
+        attendees: users[0].id,
         comments: {
-          createdBy: users[0],
+          createdBy: users[0].id,
           content: 'Great will be ready in 10 minutes'
         }
       }]);
