@@ -18,7 +18,7 @@ function eventsCreate(req, res){
 
 function eventsShow(req, res){
   Event
-    .find(req.params.id)
+    .findById(req.params.id)
     .exec()
     .then(event =>{
       if(!event){
@@ -33,7 +33,7 @@ function eventsDelete(req, res){
   Event
     .findByIdAndRemove(req.params.id)
     .exec()
-    .then(() => res.status(204))
+    .then(() => res.sendStatus(204))
     .catch(err => res.status(500).json(err));
 }
 
