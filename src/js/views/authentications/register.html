@@ -15,7 +15,9 @@
   </div>
   <div>
     <label for="avatar">Your avatar (optional):</label>
-    <input type="text" name="avatar" ng-model="vm.user.avatar">
+    <button name="image" id="avatar" ng-model="vm.user.avatar" ng-click="vm.pickFile($event)">Pick</button>
+
+    <img ng-if="vm.user.avatar" ng-src="{{ vm.user.avatar }}">
   </div>
   <div>
     <label for="password">Your password:</label>
