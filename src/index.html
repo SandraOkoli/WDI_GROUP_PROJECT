@@ -13,8 +13,10 @@
   </head>
   <body ng-controller="mainController as main">
     <nav>
+      <p ng-if="main.user">Hello {{ main.user.firstName}}</p>
+      <li><a ui-sref="home">Home</a></li>
       <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
-      <li ng-if="main.user">Hello {{ main.user.firstName}}</li>
+      <li ng-if="main.user"><a ui-sref="usersShow({{ main.user }})">Your profile</a></li>
       <li ng-if="main.user"><a ng-click="main.logout()">Logout</a></li>
     </nav>
     <main ui-view>
