@@ -1,5 +1,13 @@
 const User = require('../models/user');
 
+function usersIndex(req, res) {
+  User
+    .find()
+    .exec()
+    .then(users => res.status(200).json(users))
+    .catch((err) => res.status(500).json({ message: err }));
+}
+
 function usersShow(req, res){
   User
     .findById(req.params.id)
@@ -24,6 +32,7 @@ function usersDelete(req,res){
 }
 
 module.exports = {
+  index: usersIndex,
   show: usersShow,
   update: usersUpdate,
   delete: usersDelete

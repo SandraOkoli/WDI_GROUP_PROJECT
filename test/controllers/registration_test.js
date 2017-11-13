@@ -3,9 +3,49 @@
 require('../spec_helper');
 const User = require('../../models/user');
 
-describe('User registration controller tests', () => {
+describe('User registration with registered data', () => {
+  beforeEach(done => {
+    api
+      .post('/api/register')
+      .set('Accept', 'application/json')
+      .send({
+        firstName: 'Sandra',
+        lastName: 'Okoli',
+        email: 'test12345@ga.co',
+        avatar: 'http://fillmurray.com/300/300',
+        password: 'password',
+        passwordConfirmation: 'password'
+      })
+      .end(() => done());
+  });
 
-  before(done => {
+  afterEach(done => {
+    User.collection.drop();
+    done();
+  });
+
+
+  it('should not be possible to register with an email address that is already registered', done => {
+    api
+      .post('/api/register')
+      .set('Accept', 'application/json')
+      .send({
+        firstName: 'Sandra',
+        lastName: 'Okoli',
+        email: 'test12345@ga.co',
+        avatar: 'http://fillmurray.com/300/300',
+        password: 'password',
+        passwordConfirmation: 'password'
+      })
+      .end((err,res)=> {
+        expect(res.status).to.eq(500);
+        done();
+      });
+  });
+});
+
+describe('User registration controller tests', () => {
+  beforeEach(done => {
     User.collection.remove();
     done();
   });
@@ -28,24 +68,6 @@ describe('User registration controller tests', () => {
           expect(res.body).to.be.a('object');
           expect(res.body.message).to.eq('Welcome Sandra!');
           expect(res.body.token).to.be.a('string');
-          done();
-        });
-    });
-
-    it('should not be possible to register with an email address that is already registered', done => {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          firstName: 'Sandra',
-          lastName: 'Okoli',
-          email: 'test12345@ga.co',
-          avatar: 'http://fillmurray.com/300/300',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .end((err,res)=> {
-          expect(res.status).to.eq(500);
           done();
         });
     });
