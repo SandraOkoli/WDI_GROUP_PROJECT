@@ -20,6 +20,7 @@
     "angular-resource": "^1.6.6",
     "angular-animate": "^1.6.6",
     "satellizer": "^0.15.5",
-    "angular-filepicker": "^1.1.4"
+    "angular-filepicker": "^1.1.4",
+    "skeleton": "skeleton-css#^2.0.4"
   }
 }
