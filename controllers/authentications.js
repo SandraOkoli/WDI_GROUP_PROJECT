@@ -24,7 +24,7 @@ function authenticationsLogin(req,res){
     .findOne({ email: req.body.email })
     .exec()
     .then(user=> {
-      if (!user || !user.validatePassword(req.body.password)) res.status(401).json({
+      if (!user || !user.validatePassword(req.body.password)) return res.status(401).json({
         message: 'Unauthorised.'
       });
 
