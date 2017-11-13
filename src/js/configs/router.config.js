@@ -29,15 +29,20 @@ function Router(
       templateUrl: 'js/views/authentications/login.html',
       controller: 'loginController as vm'
     })
-    .state('eventsIndex', {
-      url: '/events',
-      templateUrl: 'js/views/events/event-index.html',
-      controller: 'eventsIndexController as vm'
-    })
     .state('usersShow', {
       url: '/users/:id',
       templateUrl: 'js/views/users/show.html',
       controller: 'usersShowController as vm'
+    })
+    .state('usersEdit', {
+      url: '/user/:id',
+      templateUrl: 'js/views/users/edit.html',
+      controller: 'usersEditController as vm'
+    })
+    .state('eventsIndex', {
+      url: '/events',
+      templateUrl: 'js/views/events/event-index.html',
+      controller: 'eventsIndexController as vm'
     })
     .state('eventsShow', {
       url: '/events/:id',
