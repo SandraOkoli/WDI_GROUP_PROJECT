@@ -5,4 +5,7 @@
     <p>Your email: {{ vm.user.email }}</p>
     <p>Your avatar: <img src="{{ vm.user.avatar }}" alt="{{vm.user.firstName}}"></p>
   </div>
+
+<a ui-sref="usersEdit({ id: vm.user.id })" class="btn btn-primary">Edit</a>
+
 </section>

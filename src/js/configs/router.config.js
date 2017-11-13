@@ -34,6 +34,11 @@ function Router(
       templateUrl: 'js/views/users/show.html',
       controller: 'usersShowController as vm'
     })
+    .state('usersEdit', {
+      url: '/user/:id',
+      templateUrl: 'js/views/users/edit.html',
+      controller: 'usersEditController as vm'
+    })
     .state('eventsIndex', {
       url: '/events',
       templateUrl: 'js/views/events/event-index.html',
