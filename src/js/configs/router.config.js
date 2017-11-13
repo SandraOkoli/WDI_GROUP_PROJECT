@@ -23,5 +23,10 @@ function Router(
       url: '/register',
       templateUrl: 'js/views/authentications/register.html',
       controller: 'registerController as vm'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'js/views/authentications/login.html',
+      controller: 'loginController as vm'
     });
 }

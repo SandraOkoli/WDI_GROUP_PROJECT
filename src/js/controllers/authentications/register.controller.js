@@ -16,7 +16,7 @@ function registerController(
   const vm = this;
 
   vm.submitForm = register;
-  
+
 
   function register(){
     $auth
@@ -24,7 +24,7 @@ function registerController(
       .then(() => $auth.login(vm.user))
       .then(() => {
         currentUserService.getUser();
-        // $state.go('eventsIndex');
+        $state.go('login');
       });
   }
 
