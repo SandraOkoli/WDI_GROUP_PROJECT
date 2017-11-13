@@ -5,15 +5,29 @@ angular
 registerController.$inject = [
   '$state',
   '$auth',
-  'currentUserService'
+  'currentUserService',
+  'filepickerService',
+  '$scope'
 ];
 
 function registerController(
   $state,
   $auth,
-  currentUserService
+  currentUserService,
+  filepickerService,
+  $scope
 ){
   const vm = this;
+
+  vm.pickFile = (e) => {
+    e.preventDefault();
+    filepickerService.pick({mimetype: 'image/*'}, (Blob) => {
+      if (Blob && Blob.url){
+        vm.user.avatar = Blob.url;
+        $scope.$apply();
+      }
+    });
+  };
 
   vm.submitForm = register;
 
