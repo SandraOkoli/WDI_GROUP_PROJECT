@@ -57,6 +57,7 @@ User
           lng: -0.082898
         },
         type: 'Birthday',
+        coverImage: 'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: 'December 13, 2017 20:00:00',
         owner: users[0].id,
@@ -72,6 +73,7 @@ User
           lng: -0.082898
         },
         type: 'Party',
+        coverImage: 'https://nourish.schnucks.com/wp-content/uploads/2016/05/Grad6.jpg',
         description: 'Graduation party',
         dateTime: 'December 15, 2017 19:00:00',
         owner: users[0].id,

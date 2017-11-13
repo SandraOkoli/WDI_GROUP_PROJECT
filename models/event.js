@@ -19,6 +19,7 @@ const eventSchema = new mongoose.Schema({
     lat: {type: Number},
     lng: {type: Number}
   },
+  coverImage: { type: String },
   type: { type: String, required: true },
   description: { type: String },
   dateTime: { type: Date, required: true },

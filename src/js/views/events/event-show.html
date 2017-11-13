@@ -1,6 +1,7 @@
-<h1>Show</h1>
 <h1>{{ vm.event.name }}</h1>
-<h2>{{ vm.event.description }}</h2>
+<img ng-src="{{ vm.event.coverImage }}">
+<p>{{ vm.event.description }}</p>
+<h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
 <h3>Organised by: {{ vm.event.owner }} </h3>
-<h4>Who's going?: {{ vm.event.attendees }} </h4>
+<h4>Going: {{ vm.event.attendees }} </h4>
 <button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
