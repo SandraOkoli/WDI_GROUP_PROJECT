@@ -5,7 +5,7 @@ const { db } = require('../config/environment');
 const User = require('../models/user');
 const Event = require('../models/event');
 
-mongoose.connect(db, { useMongoClient: true });
+mongoose.connect(db['development'], { useMongoClient: true });
 
 User.collection.drop();
 Event.collection.drop();

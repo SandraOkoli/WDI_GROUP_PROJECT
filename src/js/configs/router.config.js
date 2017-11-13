@@ -36,7 +36,7 @@ function Router(
     })
     .state('eventsIndex', {
       url: '/events',
-      templateUrl: 'js/views/event-index.html',
+      templateUrl: 'js/views/events/event-index.html',
       controller: 'eventsIndexController as vm'
     });
 }
