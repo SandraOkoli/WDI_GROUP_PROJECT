@@ -17,7 +17,6 @@ function registerController(
 
   vm.submitForm = register;
 
-
   function register(){
     $auth
       .signup(vm.user)

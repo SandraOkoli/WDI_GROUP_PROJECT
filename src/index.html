@@ -11,7 +11,14 @@
     <!-- inject:css -->
     <!-- endinject -->
   </head>
-  <body ui-view>
-    <h1>WDI Project 3</h1>
+  <body ng-controller="mainController as main">
+    <nav>
+      <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
+      <li ng-if="main.user">Hello {{ main.user.firstName}}</li>
+      <li ng-if="main.user"><a ng-click="main.logout()">Logout</a></li>
+    </nav>
+    <main ui-view>
+
+    </main>
   </body>
 </html>

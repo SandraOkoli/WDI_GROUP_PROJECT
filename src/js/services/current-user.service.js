@@ -29,5 +29,12 @@ function currentUserService(
         });
     }
   };
+
+  self.removeUser = () => {
+    self.currentUser = null;
+    $auth.logout();
+    $rootScope.$broadcast('loggedOut');
+  };
+
   self.getUser();
 }
