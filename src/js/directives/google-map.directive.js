@@ -10,9 +10,14 @@ function googleMap($window) {
     template: '<div class="google-map"></div>',
     scope: {  center: '=' },
     link(scope, element) {
-      new $window.google.maps.Map(element[0], {
+      const map = new $window.google.maps.Map(element[0], {
         zoom: 7,
         center: scope.center
+      });
+      new google.maps.Marker({
+        map: map,
+        position: scope.center
+
       });
     }
   };
