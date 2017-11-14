@@ -63,7 +63,7 @@ User
         owner: users[0].id,
         attendees: users[0].id ,
         comments: {
-          createdBy: users[0].id,
+          createdBy: users[0],
           content: 'Great will be ready in 10 minutes'
         }
       },{
@@ -79,7 +79,7 @@ User
         owner: users[0].id,
         attendees: users[0].id,
         comments: {
-          createdBy: users[0].id,
+          createdBy: users[0],
           content: 'Great will be ready in 10 minutes'
         }
       }]);

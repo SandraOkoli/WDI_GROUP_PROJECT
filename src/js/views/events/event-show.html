@@ -4,4 +4,6 @@
 <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
 <h3>Organised by: {{ vm.event.owner }} </h3>
 <h4>Going: {{ vm.event.attendees }} </h4>
+<p>{{ vm.event.comments }}</p>
 <button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
+<button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button>
