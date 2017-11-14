@@ -5,11 +5,29 @@ angular
 usersEditController.$inject = [
   'User',
   '$stateParams',
-  '$state'
+  '$state',
+  'filepickerService',
+  '$scope'
 ];
 
-function usersEditController(User, $stateParams, $state) {
+function usersEditController(
+  User,
+  $stateParams,
+  $state,
+  filepickerService,
+  $scope
+){
   const vm = this;
+
+  vm.pickFile = (e) => {
+    e.preventDefault();
+    filepickerService.pick({mimetype: 'image/*'}, (Blob) => {
+      if (Blob && Blob.url){
+        vm.user.avatar = Blob.url;
+        $scope.$apply();
+      }
+    });
+  };
 
   vm.user = User.get($stateParams);
 
