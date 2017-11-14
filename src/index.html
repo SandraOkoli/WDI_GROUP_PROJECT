@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <title>WDI Project 3: Out?</title>
     <base href="/" />
+    <link rel="stylesheet" href="/scss/normalize.css">
+    <link rel="stylesheet" href="/scss/skeleton.css">
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -18,9 +20,10 @@
       <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
       <li ng-if="!main.user"><a ui-sref="register">Register</a></li>
       <li ng-if="main.user"><a ui-sref="usersShow({{ main.user }})">Your profile</a></li>
+      <li ng-if="main.user"><a ui-sref="eventsIndex">Events</a></li>
       <li ng-if="main.user"><a ng-click="main.logout()">Logout</a></li>
     </nav>
-    <main ui-view>
+    <main class="container" ui-view>
 
     </main>
   </body>

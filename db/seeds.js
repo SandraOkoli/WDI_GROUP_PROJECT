@@ -57,10 +57,15 @@ User
           lng: -0.082898
         },
         type: 'Birthday',
+        coverImage: 'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: 'December 13, 2017 20:00:00',
-        owner: '38938093',
-        attendees: '83098390843'
+        owner: users[0].id,
+        attendees: users[0].id ,
+        comments: {
+          createdBy: users[0].id,
+          content: 'Great will be ready in 10 minutes'
+        }
       },{
         name: 'GA Graduation drinks',
         location: {
@@ -68,10 +73,15 @@ User
           lng: -0.082898
         },
         type: 'Party',
+        coverImage: 'https://nourish.schnucks.com/wp-content/uploads/2016/05/Grad6.jpg',
         description: 'Graduation party',
         dateTime: 'December 15, 2017 19:00:00',
-        owner: '38938093',
-        attendees: '83098390843'
+        owner: users[0].id,
+        attendees: users[0].id,
+        comments: {
+          createdBy: users[0].id,
+          content: 'Great will be ready in 10 minutes'
+        }
       }]);
   })
   .then((events) => console.log(`${events.length} events created`))

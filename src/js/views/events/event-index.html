@@ -1,8 +1,8 @@
 <h1>Event Index</h1>
 
 <ul>
-  <li ng-repeat="event in vm.events">{{event.name}}
-      <button ui-sref="eventsShow({ id: event._id })">show</button>
-
+  <li ng-repeat="event in vm.events">
+      <button class="button-primary" ui-sref="eventsShow({ id: event._id })">show</button>
+      {{event.name}}
 </li>
 </ul>
