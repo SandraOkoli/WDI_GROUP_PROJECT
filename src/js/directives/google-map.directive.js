@@ -2,6 +2,8 @@ angular
   .module('outApp')
   .directive('googleMap', googleMap);
 
+let map;
+
 googleMap.$inject = ['$window'];
 function googleMap($window) {
   return {
@@ -14,6 +16,16 @@ function googleMap($window) {
         zoom: 7,
         center: scope.center
       });
+
+      var request = {
+        location: scope.center,
+        radius: '500',
+        query: 'restaurant'
+      };
+
+      service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, callback);
+
       new google.maps.Marker({
         map: map,
         position: scope.center
@@ -21,4 +33,24 @@ function googleMap($window) {
       });
     }
   };
+}
+
+function callback(results, status) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      let place = results[i];
+      addMarker(results[i]);
+      // console.log(results);
+    }
+  }
+}
+
+function addMarker(place) {
+
+  let placeLoc = place.geometry.location;
+  console.log(placeLoc);
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
 }
