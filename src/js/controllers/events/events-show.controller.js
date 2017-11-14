@@ -2,8 +2,8 @@ angular
   .module('outApp')
   .controller('eventsShowController', eventsShowController);
 
-eventsShowController.$inject = ['Event','$stateParams','$state', 'User', '$scope'];
-function eventsShowController(Event, $stateParams, $state, User, $scope) {
+eventsShowController.$inject = ['Event','$stateParams','$state', 'User'];
+function eventsShowController(Event, $stateParams, $state, User) {
   const vm = this;
 
   Event
@@ -11,9 +11,6 @@ function eventsShowController(Event, $stateParams, $state, User, $scope) {
     .$promise
     .then(event => {
       vm.event = event;
-
-      $scope.lat = event.lat;
-      $scope.lng = event.lng;
 
       User
         .get({ id: vm.event.owner })
