@@ -30,7 +30,8 @@
     <div class="row">
       <div class="twelve columns">
         <div class="event-map">
-          <ng-include src="'/js/views/partials/_googlemap.html'"></ng-include>
+          <!-- <ng-include src="'/js/views/partials/_googlemap.html'"></ng-include> -->
+          <google-map center="{ lat: vm.event.location.lat, lng: vm.event.location.lng }"></google-map>
         </div>
       </div>
     </div>
@@ -42,5 +43,5 @@
       </div>
     </div>
   <!-- </div> -->
-  <google-map center="{ lat: -33.8665433, lng: 151.1956316 }"></google-map>
+  <!-- <google-map center="{ lat: -33.8665433, lng: 151.1956316 }"></google-map> -->
   </main>
