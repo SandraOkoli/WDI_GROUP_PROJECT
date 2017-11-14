@@ -1,13 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-
-$primary-bg-color: white;
-$primary-text-color: black;
+$primary-bg-color: black;
+$primary-text-color: white;
 $primary-link-color: orange;
 
 $secondary-bg-color: beige;
 $secondary-text-color: grey;
 $secondary-link-color: teal;
 
+//fonts
+$font-family: 'Roboto', sans-serif;
+$h1: 3rem;
+$h2: 2rem;
+$h3: 1rem;
 
 $primary-font: 'Helvetica', sans-serif;
 $secondary-font: 'times new roman', sans-serif;
+
+$button-bg-color: #21D4FD;
+$button-gradient-color: #B721FF;
+
+$avatar-owner-bg-color: #21D4FD;
+$avatar-attendee-bg-color: #B721FF;

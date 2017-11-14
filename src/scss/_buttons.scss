@@ -1,0 +1,6 @@
+@import 'variables';
+
+.button-primary {
+  background-image: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+  border: none;
+}

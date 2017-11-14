@@ -1,0 +1,17 @@
+@import 'variables';
+
+body {
+  background: $primary-bg-color;
+  color: $primary-text-color;
+  text-align: center;
+  font-family: $font-family;
+  h1 {
+    font-size: $h1;
+  }
+  h2 {
+    font-size: $h2;
+  }
+  h3 {
+    font-size: $h3;
+  }
+}
