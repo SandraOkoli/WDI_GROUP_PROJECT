@@ -1,9 +1,45 @@
-<h1>{{ vm.event.name }}</h1>
-<img ng-src="{{ vm.event.coverImage }}">
-<p>{{ vm.event.description }}</p>
-<h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
-<h3>Organised by: {{ vm.event.owner }} </h3>
-<h4>Going: {{ vm.event.attendees }} </h4>
-<p>{{ vm.event.comments }}</p>
-<button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
-<button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button>
+<main>
+    <div class="row">
+      <div class="ten columns">
+        <!-- <div class="event-image"> -->
+          <!-- <img ng-src="{{ vm.event.coverImage }}"> -->
+        <!-- <div ng-style="{'background-image': 'url(' + vm.event.coverImage + ')'}"></div>
+          <!-</div> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="event-info">
+          <h1>{{ vm.event.name }}</h1>
+          <p>{{ vm.event.description }}</p>
+          <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
+          <button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
+          <button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="event-members">
+          <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+          <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="event-map">
+          <ng-include src="'/js/views/partials/_googlemap.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="event-comments">
+          <p>{{ vm.event.comments }}</p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+  </main>
