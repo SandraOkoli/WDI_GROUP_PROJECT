@@ -6,29 +6,29 @@
 
   <div>
      <label for="image">Image</label>
-     <input type="text" name="image" id="image" ng-model="vm.create.coverImage">
+     <input type="text" name="image" id="image" ng-model="vm.event.coverImage">
    </div>
 
   <div>
     <label for="name">Name of the event:</label>
-    <input type="text" name="name" ng-model="vm.create.name" required>
+    <input type="text" name="name" ng-model="vm.event.name" required>
   </div>
 
   <div>
     <label for="description">Description of the event:</label>
-    <input type="description" name="description" ng-model="vm.create.description" required>
+    <input type="description" name="description" ng-model="vm.event.description" required>
   </div>
 
   <div>
     <label for="type">Type</label>
-    <input type="text" name="type" id="type" ng-model="vm.create.type">
+    <input type="text" name="type" id="type" ng-model="vm.event.type">
   </div>
 
   <div class="row">
     <div class="twelve columns">
       <div class="event-members">
-        <img class="sml-avatar-owner" ng-src="{{ vm.create.owner }}">
-        <img class="sml-avatar-attendee" ng-src=" {{ vm.create.attendees }}">
+        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+        <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
       </div>
     </div>
   </div>

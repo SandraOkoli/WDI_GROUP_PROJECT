@@ -41,19 +41,9 @@ function googleMap($window, $timeout, $rootScope) {
           map: map,
           animation: $window.google.maps.Animation.DROP
         });
-
-<<<<<<< HEAD
-function addMarker(place) {
-  let placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-=======
-
+        
         // add info window for marker
       });
     }
   };
->>>>>>> development
 }
