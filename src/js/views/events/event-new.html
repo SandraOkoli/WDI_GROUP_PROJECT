@@ -1,11 +1,11 @@
 
 
 <h1>Create new event</h1>
-{{ vm.user }}
- <form ng-submit="vm.create()">
+{{ vm.event }}
+  <form ng-submit="vm.submit(vm.event)">
 
   <div>
-     <label for="image">Image</label>
+     <label for="image">Image:</label>
      <input type="text" name="image" id="image" ng-model="vm.event.coverImage">
    </div>
 
@@ -15,26 +15,29 @@
   </div>
 
   <div>
-    <label for="description">Description of the event:</label>
-    <input type="description" name="description" ng-model="vm.event.description" required>
+    <label for="dateTime">Date and time:</label>
+    <input type="datetime-local" name="name" ng-model="vm.event.dateTime" required>
   </div>
 
   <div>
-    <label for="type">Type</label>
+    <label for="description">Description of the event:</label>
+    <input type="description" name="description" ng-model="vm.event.description">
+  </div>
+
+  <div>
+    <label for="type">Type of event:</label>
     <input type="text" name="type" id="type" ng-model="vm.event.type">
   </div>
 
-  <div class="row">
-    <div class="twelve columns">
-      <div class="event-members">
-        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
-        <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
-      </div>
-    </div>
-  </div>
+
+  <!-- <div class="event-members">
+    <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+    <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
+  </div> -->
+
 
   <div>
-    <!-- <input type="submit" value="Create"> -->
-      <button class="btn btn-success">Create</button>
+    <input type="submit" value="Create">
+      <!-- <button class="btn btn-success">Confirm</button> -->
   </div>
 </form>

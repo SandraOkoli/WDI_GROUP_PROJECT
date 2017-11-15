@@ -7,13 +7,15 @@ eventsNewController.$inject = ['Event', '$state'];
 function eventsNewController(Event, $state ) {
   const vm = this;
 
-  vm.create = eventCreate;
-
-  function eventCreate() {
+  vm.submit = event => {
+    // vm.event.owner = '5a0b3bb4ecda184dace3ea77';
+    // console.log(event);
     Event
-      .save(vm.event)
+      .save(event)
       .$promise
-      .then(() => $state.go('eventsNew'));
-  }
+      .then(()=> {
+        $state.go('eventsIndex');
+      });
+  };
 
 }

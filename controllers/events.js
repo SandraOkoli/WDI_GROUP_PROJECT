@@ -10,10 +10,9 @@ function eventsIndex(req, res){
 
 function eventsCreate(req, res){
   Event
-    .create(req.body.event)
+    .create(req.body)
     .then(event => res.status(201).json(event))
     .catch(err => res.status(500).json(err));
-
 }
 
 function eventsShow(req, res){
