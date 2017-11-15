@@ -22,3 +22,6 @@ $button-gradient-color: #B721FF;
 
 $avatar-owner-bg-color: #21D4FD;
 $avatar-attendee-bg-color: #B721FF;
+
+$main-gradient: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+$bg-gradient: linear-gradient(19deg, #282831 0%, #262626 100%);
