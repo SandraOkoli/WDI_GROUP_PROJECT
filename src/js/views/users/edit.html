@@ -17,5 +17,14 @@
     <label for="avatar">Avatar:</label>
     <input type="text" name="avatar" id="avatar" ng-model="vm.user.avatar">
   </div>
+  <div>
+    <label for="avatar">Your avatar (optional):</label>
+    <button name="image" id="avatar" ng-model="vm.user.avatar" ng-click="vm.pickFile($event)">Pick</button>
+
+    <img ng-if="vm.user.avatar" ng-src="{{ vm.user.avatar }}">
+  </div>
+  <input type="submit" value="Update">
+
   <input class="button-primary" type="submit" value="Update">
 </form>
+  

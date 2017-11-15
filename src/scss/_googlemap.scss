@@ -1,6 +1,24 @@
 
 .google-map {
-  height: 400px;
-  width: 400px;
   display: inline-block;
+  border: 2px solid black;
+  height: 400px;
+  width: 100%;
 }
+
+.search {
+  width: 50%;
+}
+
+#map {
+  display: inline-block;
+  border: 2px solid black;
+  height: 400px;
+  width: 100%;
+}
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
