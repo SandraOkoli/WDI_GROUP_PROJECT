@@ -6,5 +6,6 @@ eventsIndexController.$inject = ['Event'];
 function eventsIndexController(Event){
   const vm = this;
   vm.events = Event.query();
-  
+
+
 }

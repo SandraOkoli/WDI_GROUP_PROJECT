@@ -1,15 +1,27 @@
 
 
+
 <div class="accordbox">
     <div class="tab" ng-repeat="event in vm.events">
       <input id="tab-{{ event.name}}" type="checkbox" name="tabs">
-      <label for="tab-{{ event.name}}" class="accordlabel">{{event.name}}  </label>
+      <label for="tab-{{ event.name}}" class="accordlabel"><span class=event-name>{{event.name}}</span> <span class=date-title>{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
       <div class="tab-content">
+
+
+        <div class="avatar-slider"><div class="avatar-box" ng-repeat="attendees in vm.events"> {{event.attendees}}
+</div>
+        </div>
+
+
+
+
+        <p>{{ event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+        <p>{{event.owner}}</p>
         <button class="button-primary" ui-sref="eventsShow({ id: event._id })">show</button>
-        <button class="button-primary" ui-sref="eventsShow({ id: event._id })">Delete</button>
+
         <button class="button-primary" ui-sref="eventsShow({ id: event._id })">Edit</button>
 
-        <p>{{event.description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>{{event.description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
     </div>
 </div>
@@ -18,5 +30,6 @@
 <label for="event-trigger"></label>
 
 <div class="site-wrap">
+  <google-map center="{lat:32,lng:34}"></google-map>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
 </div>

@@ -1,8 +1,6 @@
 @import 'variables';
 
-.event-menu {
-  display:none;
-}
+
 
 .accordbox {
 float: left;
@@ -11,6 +9,7 @@ padding: 0 1em;
 height: 600px;
 overflow-y: scroll;
 max-width: 400px;
+position: fixed;
 
 
   .tab {
@@ -46,6 +45,7 @@ max-width: 400px;
 
   .tab-content p {
     margin: 1em;
+    text-align: left;
   }
   input:checked ~ .tab-content {
     max-height: 25em;
@@ -111,4 +111,11 @@ label[for="event-trigger"] {
 
 body {
   overflow-x: hidden
+}
+
+
+
+.date-title {
+position: absolute;
+left: 310px;
 }
