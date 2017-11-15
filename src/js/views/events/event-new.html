@@ -5,9 +5,9 @@
   <form ng-submit="vm.submit(vm.event)">
 
   <div>
-     <label for="image">Image:</label>
-     <input type="text" name="image" id="image" ng-model="vm.event.coverImage">
-   </div>
+    <label for="image">Upload Image:</label>
+    <button name="image" id="image" ng-model="vm.event.coverImage" ng-click="vm.pickFile($event)">Pick</button>
+  </div>
 
   <div>
     <label for="name">Name of the event:</label>
@@ -16,7 +16,7 @@
 
   <div>
     <label for="dateTime">Date and time:</label>
-    <input type="datetime-local" name="name" ng-model="vm.event.dateTime" required>
+    <input type="datetime-local" name="name" ng-model="vm.event.dateTime">
   </div>
 
   <div>
@@ -38,6 +38,5 @@
 
   <div>
     <input type="submit" value="Create">
-      <!-- <button class="btn btn-success">Confirm</button> -->
   </div>
 </form>

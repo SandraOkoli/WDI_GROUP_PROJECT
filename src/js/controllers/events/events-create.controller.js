@@ -2,20 +2,30 @@ angular
   .module('outApp')
   .controller('eventsNewController', eventsNewController );
 
-eventsNewController.$inject = ['Event', '$state'];
+eventsNewController.$inject = ['Event', '$state', 'filepickerService', '$scope'];
 
-function eventsNewController(Event, $state ) {
+function eventsNewController(Event, $state, filepickerService, $scope ) {
   const vm = this;
 
+  vm.event = {};
+
   vm.submit = event => {
-    // vm.event.owner = '5a0b3bb4ecda184dace3ea77';
-    // console.log(event);
     Event
       .save(event)
       .$promise
       .then(()=> {
         $state.go('eventsIndex');
       });
+  };
+
+  vm.pickFile = (e) => {
+    e.preventDefault();
+    filepickerService.pick({mimetype: 'image/*'}, (Blob) => {
+      if (Blob && Blob.url){
+        vm.event.coverImage = Blob.url;
+        $scope.$apply();
+      }
+    });
   };
 
 }
