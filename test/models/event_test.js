@@ -75,10 +75,7 @@ describe('Event Model',function(){
     expect(event.dateTime).to.be.a('date');
     done();
   });
-  it('owner should be a string', function(done){
-    expect(event.owner).to.be.a('string');
-    done();
-  });
+
   it('attendees should be a string', function(done){
     expect(event.attendees).to.be.a('string');
     done();
