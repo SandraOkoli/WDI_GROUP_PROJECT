@@ -17,14 +17,19 @@ function googleplace($window, $rootScope){
 
       function onPlaceChanged() {
         const newPlace = scope.googlePlaceInput.getPlace();
-
+        console.log(newPlace);
         const newPlaceLatLng = {
+          name: newPlace.name,
           lat: newPlace.geometry.location.lat(),
-          lng: newPlace.geometry.location.lng()
+          lng: newPlace.geometry.location.lng(),
+          image: newPlace.photos[0],
+          rating: newPlace.rating,
+          url: newPlace.url
         };
 
         $rootScope.$broadcast('setNewCenter', newPlaceLatLng);
       }
+
     }
 
   };

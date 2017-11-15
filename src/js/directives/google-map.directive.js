@@ -34,6 +34,7 @@ function googleMap($window, $timeout, $rootScope) {
       }
 
       $rootScope.$on('setNewCenter', (e, newLocation) => {
+        console.log(newLocation);
         map.panTo(newLocation);
 
         const marker = new $window.google.maps.Marker({
@@ -42,9 +43,24 @@ function googleMap($window, $timeout, $rootScope) {
           animation: $window.google.maps.Animation.DROP
         });
 
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+
+        const contentString =
+            `<div id="infoWindowContent">
+              <div id="siteNotice">
+              </div>
+              <h1 id="firstHeading" class="firstHeading">${newLocation.name}</h1>
+              <div id="bodyContent">
+              <div>Rating: ${newLocation.rating}</div>
+              <div>More info: <a target="_blank" href="${newLocation.url}">Go</a></div>
+            </div>`;
 
         // add info window for marker
-        
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
       });
     }
   };
