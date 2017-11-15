@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="outApp">
   <head>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYkwg3vuWOswzHQfsuz3U0ki4gz0tkQ6Y"></script> -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYkwg3vuWOswzHQfsuz3U0ki4gz0tkQ6Y&libraries=places"></script>
-
-
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYkwg3vuWOswzHQfsuz3U0ki4gz0tkQ6Y&libraries=places&sensor=false"></script>
     <meta charset="utf-8">
     <title>WDI Project 3: Out?</title>
     <base href="/" />
@@ -14,8 +12,13 @@
     <!-- endinject -->
   </head>
   <body ng-controller="mainController as main">
+<<<<<<< HEAD
     <!-- <nav>
       <p ng-if="main.user">Hello {{ main.user.firstName}}</p>
+=======
+    <nav>
+      <p class="welcome-message" ng-if="main.user">Hello {{ main.user.firstName}}</p>
+>>>>>>> development
       <li><a ui-sref="home">Home</a></li>
       <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
       <li ng-if="!main.user"><a ui-sref="register">Register</a></li>
