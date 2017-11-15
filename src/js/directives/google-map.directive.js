@@ -2,9 +2,9 @@ angular
   .module('outApp')
   .directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window', '$timeout', '$rootScope'];
+googleMap.$inject = ['$window', '$timeout', '$rootScope', '$compile'];
 
-function googleMap($window, $timeout, $rootScope) {
+function googleMap($window, $timeout, $rootScope, $compile) {
   return {
     restrict: 'E',
     replace: true,
@@ -14,6 +14,13 @@ function googleMap($window, $timeout, $rootScope) {
     },
     link(scope, element) {
       let map;
+
+      scope.addAttendeeLocPref = function() {
+        console.log('hello');
+        // inject Event factory, CurrentUserService.
+        // send data to api route where the location will be saved.
+        // change state once process has been completed.
+      };
 
 
       $timeout(setMap, 200);
@@ -48,18 +55,25 @@ function googleMap($window, $timeout, $rootScope) {
         });
 
         const contentString =
-            `<div id="infoWindowContent">
-              <div id="siteNotice">
+            `<form>
+              <div id="infoWindowContent">
+                <div id="siteNotice"></div>
+                <h1 id="firstHeading" class="firstHeading">${newLocation.name}</h1>
+                <div id="bodyContent">
+                <div>Rating: ${newLocation.rating}</div>
+                <div>More info: <a target="_blank" href="${newLocation.url}">Go</a></div>
               </div>
-              <h1 id="firstHeading" class="firstHeading">${newLocation.name}</h1>
-              <div id="bodyContent">
-              <div>Rating: ${newLocation.rating}</div>
-              <div>More info: <a target="_blank" href="${newLocation.url}">Go</a></div>
-            </div>`;
+              <br><br>
+              <div>
+                <input ng-click="addAttendeeLocPref()" id="attendeePref" class="button-primary" type="submit" value="Add as Preference">
+              </div>
+            </form>`;
+
+        const infoWindowHtml = $compile(contentString)(scope);
 
         // add info window for marker
-        const infowindow = new google.maps.InfoWindow({
-          content: contentString
+        const infowindow = new $window.google.maps.InfoWindow({
+          content: infoWindowHtml[0]
         });
       });
     }

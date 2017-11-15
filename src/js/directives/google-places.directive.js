@@ -2,7 +2,7 @@ angular
   .module('outApp')
   .directive('googleplace', googleplace);
 
-googleplace.$inject = ['$window', '$rootScope']
+googleplace.$inject = ['$window', '$rootScope'];
 
 function googleplace($window, $rootScope){
   return {
