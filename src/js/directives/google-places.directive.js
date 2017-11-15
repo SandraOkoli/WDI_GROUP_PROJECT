@@ -22,7 +22,6 @@ function googleplace($window, $rootScope){
           name: newPlace.name,
           lat: newPlace.geometry.location.lat(),
           lng: newPlace.geometry.location.lng(),
-          image: newPlace.photos[0],
           rating: newPlace.rating,
           url: newPlace.url
         };

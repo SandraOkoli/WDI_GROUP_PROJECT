@@ -79,6 +79,41 @@ function commentsDelete(req, res, next) {
     })
     .catch(next);
 }
+
+function addAttendeeLocationPreference(req, res, next){
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then(event => {
+      if (!event) return res.notFound();
+
+      console.log(req.body);
+      event.attendeeLocationPreferences.push(req.body);
+      event.save();
+    })
+    .then((event) => {
+      return res.status(201).json(event);
+    })
+    .catch(next);
+}
+
+
+function deleteAttendeeLocationPreference(req, res, next){
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then(event => {
+      if (!event) return res.notFound();
+      event.attendeeLocationPreferences.id(req.params.suggestionId).remove();
+
+      return event.save();
+    })
+    .then((event) => {
+      return res.status(201).json(event);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: eventsIndex,
   create: eventsCreate,
@@ -86,5 +121,7 @@ module.exports = {
   delete: eventsDelete,
   update: eventsUpdate,
   createComment: commentsCreate,
-  deleteComment: commentsDelete
+  deleteComment: commentsDelete,
+  addAttendeeLocPref: addAttendeeLocationPreference,
+  deleteAttendeeLocPref: deleteAttendeeLocationPreference
 };
