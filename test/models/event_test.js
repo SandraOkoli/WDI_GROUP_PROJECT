@@ -3,16 +3,18 @@
 require('../spec_helper');
 const Event = require('../../models/event');
 const event = new Event({
-  name: 'Dave',
+  name: 'daves birthday',
   location: {
     lat: 34,
-    lng: 34
+    lng: 36
   },
-  type: 'party',
-  description: 'test description',
-  dateTime: 23,
-  owner: 'dave',
-  attendees: 'xyz'
+  coverImage: 'www.fillmurray.com/300/200',
+  type: 'birthday',
+  description: 'a description',
+  dateTime: 34243542,
+  owner: '430932942',
+  attendees: '323423432423423423',
+  comments: '3426dgdsf222342342'
 });
 
 describe('Event Model',function(){
