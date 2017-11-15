@@ -87,7 +87,6 @@ function addAttendeeLocationPreference(req, res, next){
     .then(event => {
       if (!event) return res.notFound();
 
-      console.log(req.body);
       event.attendeeLocationPreferences.push(req.body);
       event.save();
     })

@@ -2,9 +2,9 @@ angular
   .module('outApp')
   .directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window', '$timeout', '$rootScope', '$compile', 'Event', 'currentUserService'];
+googleMap.$inject = ['$window', '$timeout', '$rootScope', '$compile', 'Event', 'currentUserService', '$stateParams'];
 
-function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserService) {
+function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserService, $stateParams) {
   let mapCenter;
 
   return {
@@ -20,14 +20,22 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
       scope.addAttendeeLocPref = function() {
 
         // inject Event factory, CurrentUserService.
-        const currentAttendee = currentUserService.currentUser; // Resource {avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:AN…djuaU0zipmxkwLunwn_H9WMHMWbM4FqwwibmmCveMdoD6DSWN", firstName: "Donald", lastName:"Trump", email: "donald.trump@aol.com", id: "5a0a1930e2f9e825e36b9309",
-
-        const prefLoc         = mapCenter; //{lat: 51.553797, lng: -0.082898}
-        console.log(currentAttendee);
-
-        // send data to api route where the location will be saved.
-        
-        // change state once process has been completed.
+        const currentAttendee = currentUserService.currentUser;
+        const prefLoc         = mapCenter;
+        const newAttendeePref = {
+          'attendee': currentAttendee.id,
+          'location': {
+            'lat': prefLoc.lat,
+            'lng': prefLoc.lng
+          }
+        };
+        console.log($stateParams);
+        Event
+          .addLocationPref({ id: $stateParams.id }, newAttendeePref)
+          .$promise
+          .then(data => {
+            console.log(data);
+          });
       };
 
 
@@ -35,7 +43,6 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
 
       function setMap() {
         mapCenter = {'lat': parseFloat(scope.center.lat) , 'lng': parseFloat(scope.center.lng) };
-        console.log('center', scope.center);
 
         map = new $window.google.maps.Map(element[0], {
           zoom: 14,
