@@ -14,7 +14,7 @@
     <!-- endinject -->
   </head>
   <body ng-controller="mainController as main">
-    <nav>
+    <!-- <nav>
       <p ng-if="main.user">Hello {{ main.user.firstName}}</p>
       <li><a ui-sref="home">Home</a></li>
       <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
@@ -22,7 +22,7 @@
       <li ng-if="main.user"><a ui-sref="usersShow({{ main.user }})">Your profile</a></li>
       <li ng-if="main.user"><a ui-sref="eventsIndex">Events</a></li>
       <li ng-if="main.user"><a ng-click="main.logout()">Logout</a></li>
-    </nav>
+    </nav> -->
     <main ui-view>
 
     </main>
