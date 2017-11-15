@@ -44,6 +44,7 @@ function googleMap($window, $timeout, $rootScope) {
 
 
         // add info window for marker
+        
       });
     }
   };
