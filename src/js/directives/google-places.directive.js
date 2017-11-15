@@ -5,7 +5,7 @@ angular
 function googleplace(){
   const vm = this;
   let places;
-  let infoWindow;
+  let infoWindow = new google.maps.InfoWindow();
 
   return {
     link: function(scope, element, attrs) {
@@ -13,10 +13,6 @@ function googleplace(){
         types: [],
         componentRestrictions: {country: 'uk'}
       };
-
-      infoWindow = new google.maps.InfoWindow({
-        // content: document.getElementById('info-content')
-      });
 
       scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
@@ -51,15 +47,8 @@ function googleplace(){
         google.maps.event.addListener(marker, 'click', showInfoWindow);
 
         function showInfoWindow() {
-          var marker = this;
-          console.log(marker);
-          places.getDetails({placeId: marker.placeResult.place_id},
-            function(place, status) {
-              if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                return;
-              }
-              infoWindow.open(map, marker);
-            });
+          infoWindow.setContent(place.name);
+          infoWindow.open(map, this);
         }
       }
 
