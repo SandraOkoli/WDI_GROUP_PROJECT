@@ -46,9 +46,7 @@ function callback(results, status) {
 }
 
 function addMarker(place) {
-
   let placeLoc = place.geometry.location;
-  console.log(placeLoc);
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location

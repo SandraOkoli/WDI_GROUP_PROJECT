@@ -1,0 +1,40 @@
+
+
+<h1>Create new event</h1>
+{{ vm.user }}
+ <form ng-submit="vm.create()">
+
+  <div>
+     <label for="image">Image</label>
+     <input type="text" name="image" id="image" ng-model="vm.create.coverImage">
+   </div>
+
+  <div>
+    <label for="name">Name of the event:</label>
+    <input type="text" name="name" ng-model="vm.create.name" required>
+  </div>
+
+  <div>
+    <label for="description">Description of the event:</label>
+    <input type="description" name="description" ng-model="vm.create.description" required>
+  </div>
+
+  <div>
+    <label for="type">Type</label>
+    <input type="text" name="type" id="type" ng-model="vm.create.type">
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+      <div class="event-members">
+        <img class="sml-avatar-owner" ng-src="{{ vm.create.owner }}">
+        <img class="sml-avatar-attendee" ng-src=" {{ vm.create.attendees }}">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <!-- <input type="submit" value="Create"> -->
+      <button class="btn btn-success">Create</button>
+  </div>
+</form>
