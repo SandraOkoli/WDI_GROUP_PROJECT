@@ -37,4 +37,23 @@ function eventsShowController(Event, $stateParams, $state, User) {
       });
   };
 
+  vm.createComment = () => {
+    Event
+      .addComment({ id: vm.event._id }, vm.comment)
+      .$promise
+      .then(data => {
+        vm.comment = {};
+        console.log(data);
+        vm.event.comments = data.comments;
+      });
+  };
+  vm.deleteComment = comment => {
+    Event
+      .deleteComment({ id: vm.event._id, commentId: comment._id})
+      .$promise
+      .then(() => {
+        const index = vm.event.comments.map(comment => comment._id).indexOf(comment._id);
+        vm.event.comments.splice(index, 1);
+      });
+  };
 }

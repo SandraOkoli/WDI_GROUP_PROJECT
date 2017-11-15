@@ -9,7 +9,7 @@ router.route('/register')
 
 router.route('/login')
   .post(authentications.login);
-  
+
 router.route('/users/:id')
   .get(users.show)
   .put(users.update)
@@ -26,5 +26,10 @@ router.route('/events/:id')
   .patch(events.update)
   .delete(events.delete);
 
+router.route('/events/:id/comments')
+  .post(events.createComment);
+
+router.route('/events/:id/comments/:commentId')
+  .delete(events.deleteComment);
 
 module.exports = router;
