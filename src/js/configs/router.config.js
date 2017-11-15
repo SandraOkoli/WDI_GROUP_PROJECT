@@ -17,8 +17,7 @@ function Router(
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'js/views/home.html',
-      controller: 'homeController as vm'
+      templateUrl: 'js/views/home.html'
     })
     .state('register', {
       url: '/register',
