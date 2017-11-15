@@ -45,11 +45,46 @@ function eventsUpdate(req, res){
     .catch(err => res.status(500).json(err));
 }
 
+function commentsCreate(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then(event => {
+      if (!event) return res.notFound();
+
+      req.body.createdBy = req.user;
+      event.comments.push(req.body);
+      console.log(event);
+      event.save();
+
+      return res.status(201).json(event);
+    })
+    // .then(event => res.status(201).json(event))
+    .catch(next);
+}
+
+function commentsDelete(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then(event => {
+      if (!event) return res.notFound();
+      // if (!event.belongsTo(req.user)) return res.unauthorized('You do not have permission to delete this comment');
+      event.comments.id(req.params.commentId).remove();
+
+      return event.save();
+    })
+    .then((event) => {
+      return res.status(201).json(event);
+    })
+    .catch(next);
+}
 module.exports = {
   index: eventsIndex,
   create: eventsCreate,
   show: eventsShow,
   delete: eventsDelete,
-  update: eventsUpdate
-
+  update: eventsUpdate,
+  createComment: commentsCreate,
+  deleteComment: commentsDelete
 };

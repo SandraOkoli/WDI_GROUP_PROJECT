@@ -1,46 +1,55 @@
 <main>
-    <div class="row">
-      <div class="ten columns">
-        <!-- <div class="event-image"> -->
-          <!-- <img ng-src="{{ vm.event.coverImage }}"> -->
-        <!-- <div ng-style="{'background-image': 'url(' + vm.event.coverImage + ')'}"></div>
-          <!-</div> -->
-        </div>
+  <div class="row">
+    <div class="ten columns">
+      <!-- <div class="event-image"> -->
+      <img ng-src="{{ vm.event.coverImage }}" width=100%>
+      <!-- <div ng-style="{'background-image': 'url(' + vm.event.coverImage + ')'}"></div>
+      <!-</div> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <div class="event-info">
+        <h1>{{ vm.event.name }}</h1>
+        <p>{{ vm.event.description }}</p>
+        <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
+        <button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
+        <button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button>
       </div>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <div class="event-info">
-          <h1>{{ vm.event.name }}</h1>
-          <p>{{ vm.event.description }}</p>
-          <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
-          <button class="button-primary" href="#" ng-click="vm.delete(vm.event)">Delete</button>
-          <button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button>
-        </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <div class="event-members">
+        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+        <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
       </div>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <div class="event-members">
-          <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
-          <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
-        </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <input class="search" ng-model="chosenPlace" googleplace/>
+    </div>
+    <div class="twelve columns">
+      <div class="event-map">
+        <google-map center="{ lat: vm.event.location.lat, lng: vm.event.location.lng }"></google-map>
       </div>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <div class="event-map">
-          <ng-include src="'/js/views/partials/_googlemap.html'"></ng-include>
-        </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <div class="event-comments">
+        <form ng-submit="vm.createComment()">
+          <input name="content" type="text" placeholder="Getting ready" ng-model="vm.comment.content">
+          <button class="button-primary">Leave a comment</button>
+        </form>
+        <ul>
+          <li ng-repeat="comment in vm.event.comments track by $index">
+            <p>{{ comment.content }}</p>
+            <button ng-click="vm.deleteComment(comment)">Delete Comment</button>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="twelve columns">
-        <div class="event-comments">
-          <p>{{ vm.event.comments }}</p>
-        </div>
-      </div>
-    </div>
-  <!-- </div> -->
-  <google-map center="{ lat: -33.8665433, lng: 151.1956316 }"></google-map>
-  </main>
+  </div>
+</main>

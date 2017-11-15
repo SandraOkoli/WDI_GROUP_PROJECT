@@ -2,53 +2,58 @@ angular
   .module('outApp')
   .directive('googleMap', googleMap);
 
-let map;
+googleMap.$inject = ['$window', '$timeout', '$rootScope'];
 
-googleMap.$inject = ['$window'];
-function googleMap($window) {
+function googleMap($window, $timeout, $rootScope) {
   return {
     restrict: 'E',
     replace: true,
     template: '<div class="google-map"></div>',
-    scope: {  center: '=' },
+    scope: {
+      center: '='
+    },
     link(scope, element) {
-      const map = new $window.google.maps.Map(element[0], {
-        zoom: 7,
-        center: scope.center
-      });
+      let map;
 
-      var request = {
-        location: scope.center,
-        radius: '500',
-        query: 'restaurant'
-      };
 
-      service = new google.maps.places.PlacesService(map);
-      service.textSearch(request, callback);
+      $timeout(setMap, 200);
 
-      new google.maps.Marker({
-        map: map,
-        position: scope.center
+      function setMap() {
+        const mapCenter = {'lat': parseFloat(scope.center.lat) , 'lng': parseFloat(scope.center.lng) };
+        console.log('center', scope.center);
 
-      });
-    }
-  };
-}
+        map = new $window.google.maps.Map(element[0], {
+          zoom: 14,
+          center: mapCenter
+        });
 
-function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      let place = results[i];
-      addMarker(results[i]);
-      // console.log(results);
-    }
-  }
-}
+        new $window.google.maps.Marker({
+          map: map,
+          position: scope.center
+        });
+      }
 
+      $rootScope.$on('setNewCenter', (e, newLocation) => {
+        map.panTo(newLocation);
+
+        const marker = new $window.google.maps.Marker({
+          position: newLocation,
+          map: map,
+          animation: $window.google.maps.Animation.DROP
+        });
+
+<<<<<<< HEAD
 function addMarker(place) {
   let placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
   });
+=======
+
+        // add info window for marker
+      });
+    }
+  };
+>>>>>>> development
 }
