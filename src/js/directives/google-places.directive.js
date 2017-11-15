@@ -2,56 +2,57 @@ angular
   .module('outApp')
   .directive('googleplace', googleplace);
 
-function googleplace(){
-  const vm = this;
-  let places;
-  let infoWindow = new google.maps.InfoWindow();
-
+googleplace.$inject = ['$window', '$rootScope']
+function googleplace($window, $rootScope){
   return {
-    link: function(scope, element, attrs) {
-      var options = {
+    link: (scope, element) => {
+      const options = {
         types: [],
         componentRestrictions: {country: 'uk'}
       };
 
-      scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+      scope.googlePlaceInput = new $window.google.maps.places.Autocomplete(element[0], options);
+      scope.googlePlaceInput.addListener('place_changed', onPlaceChanged);
 
-      element.blur(function(e) {
-        window.setTimeout(function() {
-          angular.element(element).trigger('input');
-        }, 0);
-      });
+      function onPlaceChanged() {
+        const newPlace = scope.googlePlaceInput.getPlace();
 
-      places = new google.maps.places.PlacesService(map);
+        const newPlaceLatLng = {
+          lat: newPlace.geometry.location.lat(),
+          lng: newPlace.geometry.location.lng()
+        };
 
-      scope.gPlace.addListener('place_changed', onPlaceChanged);
+        $rootScope.$broadcast('setNewCenter', newPlaceLatLng);
+      }
 
       // When the user selects a place, get the place details and
       // zoom the map in on the place.
-      function onPlaceChanged() {
-        var place = scope.gPlace.getPlace();
-
-        if (place.geometry) {
-          // map.panTo(place.geometry.location); doesn't work as place.geometry.location doesnt return a latlng object. Online lots of people complained about google changing this overnight. They suggest using google.maps.latlng.toUrlValue() but this returns an error saying it isn't a function
-          var lat = place.geometry.location.lat();
-          var lng = place.geometry.location.lng();
-
-          map.panTo({ lat, lng });
-          map.setZoom(15);
-        }
-        const marker = new google.maps.Marker({
-          position: { lat, lng },
-          map: map,
-          animation: google.maps.Animation.DROP
-        });
-        google.maps.event.addListener(marker, 'click', showInfoWindow);
-
-        function showInfoWindow() {
-          infoWindow.setContent(place.name);
-          infoWindow.open(map, this);
-        }
-      }
-
+      // function onPlaceChanged() {
+      //   var place = scope.gPlace.getPlace();
+      //
+      //   if (place.geometry) {
+      //     // map.panTo(place.geometry.location); doesn't work as place.geometry.location doesnt return a latlng object. Online lots of people complained about google changing this overnight. They suggest using google.maps.latlng.toUrlValue() but this returns an error saying it isn't a function
+      //     let lat = place.geometry.location.lat();
+      //     let lng = place.geometry.location.lng();
+      //     markerPos = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
+      //
+      //     map.panTo({ lat, lng });
+      //     map.setZoom(15);
+      //   }
+      //   const marker = new google.maps.Marker({
+      //     position: markerPos,
+      //     map: map,
+      //     animation: google.maps.Animation.DROP
+      //   });
+      //
+      //   google.maps.event.addListener(marker, 'click', showInfoWindow);
+      //
+      //   function showInfoWindow() {
+      //     console.log(infoWindow);
+      //     //infoWindow.setContent(place.name);
+      //     infoWindow.open(map, this);
+      //   }
+      // }
 
     }
 
