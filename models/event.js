@@ -30,9 +30,9 @@ const eventSchema = new mongoose.Schema({
   coverImage: { type: String },
   type: { type: String, required: true },
   description: { type: String },
-  dateTime: { type: String, required: true },
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false }, //changed from string to objectId
-  attendees: { type: Array },//we may need to change this to an array of users!
+  dateTime: { type: Date, required: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  attendees: { type: String },//we may need to change this to an array of users!
   comments: [commentsSchema]
 });
 

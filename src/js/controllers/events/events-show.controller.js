@@ -18,7 +18,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
         .get({ id: vm.event.owner })
         .$promise
         .then(user => {
-          vm.event.owner = user.avatar;
+          vm.event.owner = user;
         });
 
 
@@ -28,14 +28,14 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
         .get({ id: vm.event.attendees })
         .$promise
         .then(user => {
-          vm.event.attendees = user.avatar;
+          vm.event.attendees = user;
         });
 
       User
         .get({ id: vm.event.comments.createdBy })
         .$promise
         .then(user => {
-          vm.event.comments.createdBy = user.avatar;
+          vm.event.comments.createdBy = user;
         });
     });
 
