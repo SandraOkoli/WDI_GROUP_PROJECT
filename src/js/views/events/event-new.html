@@ -8,7 +8,10 @@
     </div>
     <div class="row">
       <div class="twelve columns">
-        <google-map ng-model="vm.event.location" center="{ lat: '51.515379', lng: '-0.072513' }"></google-map>
+        <input type="text" class="search" ng-model="chosenPlace" googleplace/>
+      </div>
+      <div class="twelve columns" id="appendMap">
+        <google-map ng-if="vm.event.location.lat" center="{ lat: vm.event.location.lat, lng: vm.event.location.lng }"></google-map>
       </div>
     </div>
     <div class="row">
