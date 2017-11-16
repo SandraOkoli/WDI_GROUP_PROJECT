@@ -109,5 +109,8 @@
     "main-bower-files": "^2.13.1",
     "nyc": "^11.3.0",
     "require-dir": "^0.3.1"
+  },
+  "engines": {
+    "node": "8.4.0"
   }
 }
