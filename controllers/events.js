@@ -51,15 +51,11 @@ function commentsCreate(req, res, next) {
     .then(event => {
       if (!event) return res.notFound();
 
-      console.log(req.body);
-      req.body.createdBy = req.user; //undefined
       event.comments.push(req.body);
-
       event.save();
 
       return res.status(201).json(event);
     })
-    // .then(event => res.status(201).json(event))
     .catch(next);
 }
 

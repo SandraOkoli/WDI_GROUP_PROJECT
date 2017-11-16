@@ -9,6 +9,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   const vm = this;
   vm.arrOfAttendees = [];
   vm.arrOfCommenters = [];
+  vm.currentUser = currentUserService.currentUser.id;
 
   Event
     .get($stateParams)
@@ -39,7 +40,6 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
               .$promise
               .then(user => {
                 vm.arrOfCommenters.push(user);
-                console.log('ARROFCOMMENTS', vm.arrOfCommenters);
               });
           }
         });
@@ -64,12 +64,15 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   };
 
   vm.createComment = () => {
+    console.log(vm);
+    const commentObject = { 'createdBy': vm.currentUser, 'content': vm.comment.content  };
     Event
-      .addComment({ id: vm.event._id }, vm.comment)
+      .addComment({ id: vm.event._id }, commentObject)
       .$promise
       .then(data => {
         vm.comment = {};
         vm.event.comments = data.comments;
+
       });
   };
 
