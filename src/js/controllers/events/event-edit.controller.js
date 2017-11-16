@@ -7,7 +7,13 @@ eventsEditController.$inject = [ 'Event', '$stateParams', '$state'];
 function eventsEditController(Event, $stateParams, $state ) {
   const vm = this;
 
-  vm.event = Event.get($stateParams);
+  Event
+    .get($stateParams)
+    .$promise
+    .then((event)=> {
+      vm.event = event;
+      vm.event.dateTime = new Date(event.dateTime);
+    });
 
   vm.submit = event => {
     Event

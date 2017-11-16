@@ -46,6 +46,11 @@ function Router(
       templateUrl: 'js/views/events/event-index.html',
       controller: 'eventsIndexController as vm'
     })
+    .state('eventsNew', {
+      url: '/events/new',
+      templateUrl: 'js/views/events/event-new.html',
+      controller: 'eventsNewController as vm'
+    })
     .state('eventsShow', {
       url: '/events/:id',
       templateUrl: 'js/views/events/event-show.html',
@@ -57,5 +62,5 @@ function Router(
       controller: 'eventsEditController as vm'
     });
 
-
+  $urlRouterProvider.otherwise('/');
 }

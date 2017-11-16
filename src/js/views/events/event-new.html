@@ -1,0 +1,48 @@
+<h1>Create new event</h1>
+  <form ng-submit="vm.submit(vm.event)">
+    <div class="row">
+      <div class="twelve columns">
+        <label for="name">Name of the event:</label>
+        <input type="text" name="name" ng-model="vm.event.name" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <google-map ng-model="vm.event.location" center="{ lat: '51.515379', lng: '-0.072513' }"></google-map>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="image">Cover Image:</label>
+        <button name="image" id="image" ng-model="vm.event.coverImage" ng-click="vm.pickFile($event)">Pick</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="type">Type of event:</label>
+        <input type="text" name="type" id="type" ng-model="vm.event.type" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="description">Description of the event:</label>
+        <input type="text" name="description" ng-model="vm.event.description">
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="dateTime">Date and time:</label>
+        <input type="datetime-local" name="dateTime" ng-model="vm.event.dateTime" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <input type="submit" value="Create">
+      </div>
+    </div>
+</form>
+
+  <!-- <div class="event-members">
+    <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+    <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees }}">
+  </div> -->

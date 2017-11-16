@@ -1,10 +1,14 @@
 const mongoose   = require('mongoose');
+// const express = require('express');
 mongoose.Promise = require('bluebird');
 
-const { db } = require('../config/environment');
+const { env, db } = require('../config/environment');
 const User = require('../models/user');
 const Event = require('../models/event');
+// const app             = express();
+// const environment   = app.get('env');
 
+// mongoose.connect(db[env], { useMongoClient: true });
 mongoose.connect(db['development'], { useMongoClient: true });
 
 User.collection.drop();
@@ -75,7 +79,7 @@ User
         type: 'Birthday',
         coverImage: 'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
-        dateTime: 'December 13, 2017 20:00:00',
+        dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: users[0].id ,
         comments: {
@@ -91,7 +95,7 @@ User
         type: 'Party',
         coverImage: 'https://nourish.schnucks.com/wp-content/uploads/2016/05/Grad6.jpg',
         description: 'Graduation party',
-        dateTime: 'December 15, 2017 19:00:00',
+        dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: users[0].id,
         comments: {

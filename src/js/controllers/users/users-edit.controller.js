@@ -42,7 +42,3 @@ function usersEditController(
       });
   };
 }
-
-//
-//   vm.edit = usersEdit;
-// }

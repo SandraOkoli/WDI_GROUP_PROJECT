@@ -16,7 +16,7 @@ function eventsShowController(Event, $stateParams, $state, User) {
         .get({ id: vm.event.owner })
         .$promise
         .then(user => {
-          vm.event.owner = user.avatar;
+          vm.event.owner = user;
         });
 
       //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
@@ -24,7 +24,14 @@ function eventsShowController(Event, $stateParams, $state, User) {
         .get({ id: vm.event.attendees })
         .$promise
         .then(user => {
-          vm.event.attendees = user.avatar;
+          vm.event.attendees = user;
+        });
+
+      User
+        .get({ id: vm.event.comments.createdBy })
+        .$promise
+        .then(user => {
+          vm.event.comments.createdBy = user;
         });
     });
 

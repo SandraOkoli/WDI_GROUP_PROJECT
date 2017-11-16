@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const commentsSchema = new mongoose.Schema({
   content: { type: String, required: true },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  timeStamp: { type: Date }
 });
 
 commentsSchema.methods.belongsTo = function commentBelongsTo(user) {
@@ -30,7 +31,7 @@ const eventSchema = new mongoose.Schema({
   type: { type: String, required: true },
   description: { type: String },
   dateTime: { type: Date, required: true },
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }, //changed from string to objectId
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   attendees: { type: String },//we may need to change this to an array of users!
   comments: [commentsSchema]
 });

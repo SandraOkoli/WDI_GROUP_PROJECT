@@ -1,10 +1,24 @@
-angular
-  .module('outApp')
-  .directive('googleMap', googleMap);
+angular.module('outApp').directive('googleMap', googleMap);
 
-googleMap.$inject = ['$window', '$timeout', '$rootScope', '$compile', 'Event', 'currentUserService', '$stateParams'];
+googleMap.$inject = [
+  '$window',
+  '$timeout',
+  '$rootScope',
+  '$compile',
+  'Event',
+  'currentUserService',
+  '$stateParams'
+];
 
-function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserService, $stateParams) {
+function googleMap(
+  $window,
+  $timeout,
+  $rootScope,
+  $compile,
+  Event,
+  currentUserService,
+  $stateParams
+) {
   let mapCenter;
 
   return {
@@ -18,31 +32,32 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
       let map;
 
       scope.addAttendeeLocPref = function() {
-
         // inject Event factory, CurrentUserService.
         const currentAttendee = currentUserService.currentUser;
-        const prefLoc         = mapCenter;
+        const prefLoc = mapCenter;
         const newAttendeePref = {
-          'attendee': currentAttendee.id,
-          'location': {
-            'lat': prefLoc.lat,
-            'lng': prefLoc.lng
+          attendee: currentAttendee.id,
+          location: {
+            lat: prefLoc.lat,
+            lng: prefLoc.lng
           }
         };
         console.log($stateParams);
-        Event
-          .addLocationPref({ id: $stateParams.id }, newAttendeePref)
-          .$promise
-          .then(data => {
-            console.log(data);
-          });
+        Event.addLocationPref(
+          { id: $stateParams.id },
+          newAttendeePref
+        ).$promise.then(data => {
+          console.log(data);
+        });
       };
-
 
       $timeout(setMap, 200);
 
       function setMap() {
-        mapCenter = {'lat': parseFloat(scope.center.lat) , 'lng': parseFloat(scope.center.lng) };
+        mapCenter = {
+          lat: parseFloat(scope.center.lat),
+          lng: parseFloat(scope.center.lng)
+        };
 
         map = new $window.google.maps.Map(element[0], {
           zoom: 14,
@@ -69,14 +84,17 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
           infowindow.open(map, marker);
         });
 
-        const contentString =
-            `<form>
+        const contentString = `<form>
               <div id="infoWindowContent">
                 <div id="siteNotice"></div>
-                <h1 id="firstHeading" class="firstHeading">${newLocation.name}</h1>
+                <h1 id="firstHeading" class="firstHeading">${
+                  newLocation.name
+                }</h1>
                 <div id="bodyContent">
                 <div>Rating: ${newLocation.rating}</div>
-                <div>More info: <a target="_blank" href="${newLocation.url}">Go</a></div>
+                <div>More info: <a target="_blank" href="${
+                  newLocation.url
+                }">Go</a></div>
               </div>
               <br><br>
               <div>
