@@ -32,4 +32,10 @@ router.route('/events/:id/comments')
 router.route('/events/:id/comments/:commentId')
   .delete(events.deleteComment);
 
+router.route('/events/:id/attendeesuggestions')
+  .post(events.addAttendeeLocPref);
+
+router.route('/events/:id/attendeesuggestions/:suggestionId')
+  .delete(events.deleteAttendeeLocPref);
+
 module.exports = router;
