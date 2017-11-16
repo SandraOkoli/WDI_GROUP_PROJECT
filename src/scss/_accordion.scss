@@ -93,6 +93,7 @@ label[for="event-trigger"] {
     height: 30px;
     cursor: pointer;
     background-color: pink;
+    color: white;
 }
 
 .event-trigger:checked + label {
@@ -101,7 +102,7 @@ label[for="event-trigger"] {
 
 .event-trigger:checked ~ .site-wrap {
     left: 400px;
-    box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 0 5px rgba(0,0,0,0.5);
 }
 
 
