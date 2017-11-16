@@ -1,12 +1,14 @@
 const mongoose   = require('mongoose');
+const express = require('express');
 mongoose.Promise = require('bluebird');
 
 const { db } = require('../config/environment');
 const User = require('../models/user');
 const Event = require('../models/event');
-const env = require('../config/environment');
+const app             = express();
+const environment   = app.get('env');
 
-mongoose.connect(db[env], { useMongoClient: true });
+mongoose.connect(db[environment], { useMongoClient: true });
 
 User.collection.drop();
 Event.collection.drop();
