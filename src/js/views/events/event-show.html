@@ -9,13 +9,15 @@
   <div class="row">
     <div class="twelve columns">
       <div class="event-info">
-        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner }}">
+        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
         <h1>{{ vm.event.name }}</h1>
         <p>{{ vm.event.description }}</p>
         <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
         <img src="../images/delete-icon.png" ng-click="vm.delete(vm.event)">
         <img src="../images/edit-icon.png" ui-sref="eventsEdit({ id: vm.event._id })">
-        <!-- <button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button> -->
+        <div>
+          <button class="button-primary" ng-click="vm.joinEvent()">Join event</button>
+        </div>
       </div>
     </div>
   </div>
@@ -23,7 +25,6 @@
     <div class="twelve columns">
         <hr>
       <div class="event-members">
-        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
         <img ng-repeat="attendee in vm.arrOfAttendees" class="sml-avatar-attendee" ng-src=" {{ attendee.avatar }}">
       </div>
     </div>
@@ -43,9 +44,10 @@
       <div class="event-comments">
         <ul>
           <li ng-repeat="comment in vm.event.comments track by $index">
-            <p class="comments-bubble">{{ comment.content }} </p>
+            <span><img class="sml-avatar-owner" ng-src="{{ vm.arrOfCommenters[$index].avatar }}"></span>
+            <span><p class="comments-bubble">{{ comment.content }} </p></span>
+            <span><img src="../images/delete-icon.png" ng-click="vm.deleteComment(comment)"></span>
             <!-- <p>{{ comment.timeStamp | am-time-ago: 'dddd, MMMM Do YYYY, h:mm a' }}</p> -->
-            <img src="../images/delete-icon.png" ng-click="vm.deleteComment(comment)">
           </li>
         </ul>
         <form ng-submit="vm.createComment()">
@@ -54,8 +56,24 @@
           <button class="button-primary">Post a comment</button>
           <!-- <h2>{{ comment.timeStamp |  amDifference : null : 'hours' }}</h2> -->
         </form>
-        <button class="button-primary" ng-click="vm.joinEvent()">Join event</button>
       </div>
+
+      <!-- <div class="event-comments">
+        <ul>
+          <li ng-repeat="comment in vm.event.comments track by $index">
+            <p class="comments-bubble">{{ comment.content }} </p>
+            <img src="../images/delete-icon.png" ng-click="vm.deleteComment(comment)">
+             <p>{{ comment.timeStamp | am-time-ago: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+          </li>
+        </ul>
+        <form ng-submit="vm.createComment()">
+          <img src="../images/chat-icon.png">
+          <input name="content" type="text" placeholder="Getting ready" ng-model="vm.comment.content">
+          <button class="button-primary">Post a comment</button>
+           <h2>{{ comment.timeStamp |  amDifference : null : 'hours' }}</h2>
+        </form>
+      </div> -->
+
     </div>
   </div>
 </main>

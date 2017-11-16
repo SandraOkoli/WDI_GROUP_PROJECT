@@ -6,6 +6,7 @@ eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'curren
 function eventsShowController(Event, $stateParams, $state, User, currentUserService) {
   const vm = this;
   vm.arrOfAttendees = [];
+  vm.arrOfCommenters = [];
 
   Event
     .get($stateParams)
@@ -27,15 +28,18 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
                 vm.arrOfAttendees.push(user);
               });
           }
-        });
 
-      //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
 
-      User
-        .get({ id: vm.event.comments.createdBy })
-        .$promise
-        .then(user => {
-          vm.event.comments.createdBy = user;
+          for (var j = 0; j < vm.event.comments.length; j++) {
+
+            User
+              .get({ id: vm.event.comments[j].createdBy })
+              .$promise
+              .then(user => {
+                vm.arrOfCommenters.push(user);
+                console.log('ARROFCOMMENTS', vm.arrOfCommenters);
+              });
+          }
         });
     });
 
