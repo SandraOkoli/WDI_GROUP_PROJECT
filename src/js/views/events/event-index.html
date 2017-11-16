@@ -23,4 +23,10 @@
   <img class="eventlogo" ng-src="../images/outpopped.png" alt="outlogo">
 
 <p>Welcome to Out, please join or make an event to get started!</p>
+<button class="button-primary">See the Events!</button><br>
+<button class="button-primary" ui-sref="eventsNew({{ main.user }})">New Event</button><br>
+<button class="button-primary" ui-sref="usersShow({{ main.user }})">Your Profile</button><br>
+<button class="button-primary" ng-click="main.logout()"> Log Out</button>
+
+
 </div>

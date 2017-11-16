@@ -30,7 +30,15 @@
   position:relative;
   z-index: 2;
   font-family: $font-family;
+
   }
+
+.regbox {
+  @extend .mainbox;
+  overflow-y:scroll;
+  border: 10px 0 0 0;
+}
+
 
   .picbox {
   height: 500px;
@@ -52,9 +60,11 @@
   @media screen and (min-width: 480px) {
     .picbox {
       display: inline-block;
+
     }
     .mainbox {
       position: absolute;
+
     }
 }
 
