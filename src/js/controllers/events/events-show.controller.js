@@ -70,12 +70,9 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   vm.joinEvent = () => {
 
     console.log(vm.event.attendees);
-    
+
     const there =contains(vm.event.attendees,currentUserService.currentUser.id );
     there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
-
-
-
 
 function contains(a,obj){
       for (var i = 0; i < a.length; i++) {
@@ -85,12 +82,6 @@ function contains(a,obj){
       }
       return false;
     }
-
-    // .get({ id: vm.event.attendees })
-    // .$promise
-    // .then(user => {
-    //   vm.event.attendees = user.avatar;
-    // });
   };
 
 }
