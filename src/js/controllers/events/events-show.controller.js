@@ -26,6 +26,13 @@ function eventsShowController(Event, $stateParams, $state, User) {
         .then(user => {
           vm.event.attendees = user.avatar;
         });
+
+      User
+        .get({ id: vm.event.comments.createdBy })
+        .$promise
+        .then(user => {
+          vm.event.comments.createdBy = user.avatar;
+        });
     });
 
   vm.delete = event => {
