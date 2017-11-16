@@ -4,7 +4,7 @@ $primary-bg-color: black;
 $primary-text-color: white;
 $primary-link-color: orange;
 
-$secondary-bg-color: beige;
+$secondary-bg-color: #191970;
 $secondary-text-color: grey;
 $secondary-link-color: teal;
 
@@ -28,3 +28,6 @@ $avatar-attendee-bg-color: #B721FF;
 $delete-icon: '../images/delete-icon.png';
 $chat-icon: '../images/chat-icon.png';
 $edit-icon: '../images/edit-icon.png';
+
+$main-gradient: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+$bg-gradient: linear-gradient(19deg, #282831 0%, #262626 100%);

@@ -11,6 +11,14 @@ commentsSchema.methods.belongsTo = function commentBelongsTo(user) {
   return user.id === this.createdBy.toString();
 };
 
+const attendeeLocationPreferences = new mongoose.Schema({
+  attendee: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  location: {
+    lat: {type: Number},
+    lng: {type: Number}
+  }
+});
+
 const eventSchema = new mongoose.Schema({
   //id will be provided by mongo
   name: { type: String, required: true },
@@ -18,11 +26,12 @@ const eventSchema = new mongoose.Schema({
     lat: {type: Number},
     lng: {type: Number}
   },
+  attendeeLocationPreferences: [attendeeLocationPreferences],
   coverImage: { type: String },
   type: { type: String, required: true },
   description: { type: String },
-  dateTime: { type: Date, required: true },
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }, //changed from string to objectId
+  dateTime: { type: String, required: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: false }, //changed from string to objectId
   attendees: { type: String },//we may need to change this to an array of users!
   comments: [commentsSchema]
 });

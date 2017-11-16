@@ -56,6 +56,22 @@ User
           lat: 51.553797,
           lng: -0.082898
         },
+        attendeeLocationPreferences: [
+          {
+            attendee: users[0].id,
+            location: {
+              lat: 50.55223,
+              lng: -1.8798
+            }
+          },
+          {
+            attendee: users[1].id,
+            location: {
+              lat: 50.5500,
+              lng: 21.8798
+            }
+          }
+        ],
         type: 'Birthday',
         coverImage: 'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
         description: 'Donnie boy turns 90. Let\'s celebrate!',

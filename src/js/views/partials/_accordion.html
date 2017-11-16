@@ -1,0 +1,22 @@
+<html ng-controller="eventsIndexController">
+
+<div class="accordbox" ng-controller="eventsIndexController">
+    <div class="tab" ng-repeat="event in vm.events">
+      <input id="tab-{{ event.name}}" type="checkbox" name="tabs">
+      <label for="tab-{{ event.name}}" class="accordlabel"><span class=event-name>{{event.name}}</span> <span class=date-title>{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
+      <div class="tab-content">
+        <div class="avatar-slider">{{event.attendees}}</div>
+        <p>{{ event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+        <p>{{event.owner.name}}</p>
+        <button class="button-primary" ui-sref="eventsShow({ id: event._id })">show</button>
+
+        <button class="button-primary" ui-sref="eventsShow({ id: event._id })">Edit</button>
+
+        <p>{{event.description}} </p>
+      </div>
+    </div>
+</div>
+
+<input type="checkbox" id="event-trigger" class="event-trigger" />
+<label for="event-trigger"></label>
+</html>

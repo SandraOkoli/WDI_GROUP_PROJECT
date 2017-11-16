@@ -50,7 +50,6 @@ function eventsShowController(Event, $stateParams, $state, User) {
       .$promise
       .then(data => {
         vm.comment = {};
-        console.log(data);
         vm.event.comments = data.comments;
       });
   };
