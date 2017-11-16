@@ -8,7 +8,8 @@ const Event = require('../models/event');
 // const app             = express();
 // const environment   = app.get('env');
 
-mongoose.connect(db[env], { useMongoClient: true });
+// mongoose.connect(db[env], { useMongoClient: true });
+mongoose.connect(db['development'], { useMongoClient: true });
 
 User.collection.drop();
 Event.collection.drop();

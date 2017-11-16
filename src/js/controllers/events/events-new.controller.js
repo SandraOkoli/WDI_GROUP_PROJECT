@@ -7,9 +7,12 @@ eventsNewController.$inject = ['Event', '$state', 'filepickerService', '$scope',
 function eventsNewController(Event, $state, filepickerService, $scope, currentUserService ) {
   const vm = this;
 
+
   vm.submit = event => {
-    vm.event.owner = currentUserService.currentUser.id;
     vm.event.location    = { lat: '51.515379', lng: '-0.072513' };
+
+
+    vm.event.owner = () => currentUserService.currentUser.id;
 
     Event
       .save(event)
