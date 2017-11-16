@@ -67,9 +67,25 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
       });
   };
 
-  vm.joinEvent = event => {
-    // event.push($stateParams);
-   console.log(vm.event.attendees);
+  vm.joinEvent = () => {
+
+    console.log(vm.event.attendees);
+    
+    const there =contains(vm.event.attendees,currentUserService.currentUser.id );
+    there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
+
+
+
+
+function contains(a,obj){
+      for (var i = 0; i < a.length; i++) {
+        if (a[i] === obj) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     // .get({ id: vm.event.attendees })
     // .$promise
     // .then(user => {

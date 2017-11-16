@@ -6,6 +6,10 @@ const commentsSchema = new mongoose.Schema({
   timeStamp: { type: Date }
 });
 
+const attendeesSchema = new mongoose.Schema({
+  attendee: { type: mongoose.Schema.ObjectId, ref: 'User' }
+});
+
 commentsSchema.methods.belongsTo = function commentBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
@@ -32,7 +36,7 @@ const eventSchema = new mongoose.Schema({
   description: { type: String },
   dateTime: { type: Date, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  attendees: { type: String },//we may need to change this to an array of users!
+  attendees: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],//we may need to change this to an array of users!
   comments: [commentsSchema]
 });
 

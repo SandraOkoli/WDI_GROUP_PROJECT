@@ -81,7 +81,7 @@ User
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: 'December 13, 2017 20:00:00',
         owner: users[0].id,
-        attendees: [users[0].id],
+        attendees: [users[0],users[1],users[2]],
         comments: {
           createdBy: users[0].id,
           content: 'Great will be ready in 10 minutes'
