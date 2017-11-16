@@ -13,7 +13,36 @@
       </div>
       <div class="picbox">
 
-      </div>
+
+
+<div class="bigbox">
+<div class="mainbox">
+  <img class="logobox" ng-src="../images/outpopped.png" alt="outlogo">
+
+  <div class="loginbox">
+  <form ng-submit="vm.submitForm()">
+    <div>
+      <label for="email">Your email address:</label>
+      <input type="text" name="email" ng-model="vm.user.email" required>
     </div>
+    <div>
+      <label for="password">Your password:</label>
+      <input type="password" name="password" ng-model="vm.user.password" required>
+    </div>
+    <div>
+      <input class="button-primary" type="submit" value="Login">
+    </div>
+    <button class="primary-button" ui-sref="register">Register</button>
+
+  </form>  <p class="subtitle">Welcome to <strong>Out?</strong>
+
+    <br> The nightlife planner app</p>
+
+
   </div>
+
+</div>
+<div class="picbox">
+
+</div>
 </div>

@@ -62,14 +62,14 @@ User
         },
         attendeeLocationPreferences: [
           {
-            attendee: users[0].id,
+            attendee: [users[0].id],
             location: {
               lat: 50.55223,
               lng: -1.8798
             }
           },
           {
-            attendee: users[1].id,
+            attendee: [users[1].id],
             location: {
               lat: 50.5500,
               lng: 21.8798
@@ -81,7 +81,7 @@ User
         description: 'Donnie boy turns 90. Let\'s celebrate!',
         dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
-        attendees: users[0].id ,
+        attendees: [users[0],users[1],users[2]],
         comments: {
           createdBy: users[0].id,
           content: 'Great will be ready in 10 minutes'
@@ -97,7 +97,7 @@ User
         description: 'Graduation party',
         dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
-        attendees: users[0].id,
+        attendees: [users[0].id],
         comments: {
           createdBy: users[0].id,
           content: 'Great will be ready in 10 minutes'
