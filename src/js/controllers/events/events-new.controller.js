@@ -1,15 +1,19 @@
 angular
   .module('outApp')
-  .controller('eventsNewController', eventsNewController );
+  .controller('eventsNewController', eventsNewController);
 
-eventsNewController.$inject = ['Event', '$state', 'filepickerService', '$scope'];
+eventsNewController.$inject = ['Event', '$state', 'filepickerService', '$scope', 'currentUserService'];
 
-function eventsNewController(Event, $state, filepickerService, $scope ) {
+function eventsNewController(Event, $state, filepickerService, $scope, currentUserService ) {
   const vm = this;
 
-  vm.event = {};
 
   vm.submit = event => {
+    vm.event.location    = { lat: '51.515379', lng: '-0.072513' };
+
+
+    vm.event.owner = () => currentUserService.currentUser.id;
+
     Event
       .save(event)
       .$promise
