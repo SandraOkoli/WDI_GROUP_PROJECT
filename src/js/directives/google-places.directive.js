@@ -3,7 +3,6 @@ angular
   .directive('googleplace', googleplace);
 
 googleplace.$inject = ['$window', '$rootScope'];
-
 function googleplace($window, $rootScope){
   return {
     link: (scope, element) => {

@@ -2,18 +2,10 @@
   "name": "wdi-project-3",
   "description": "group project",
   "main": "index.js",
-  "authors": [
-    "Students"
-  ],
+  "authors": ["Students"],
   "license": "ISC",
   "homepage": "",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
   "dependencies": {
     "angular": "^1.6.6",
     "angular-ui-router": "^1.0.10",
@@ -23,5 +15,8 @@
     "angular-filepicker": "^1.1.4",
     "skeleton": "skeleton-css#^2.0.4",
     "angular-moment": "^1.1.0"
+  },
+  "resolutions": {
+    "angular": "1.6.6"
   }
 }

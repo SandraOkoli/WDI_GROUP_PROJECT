@@ -1,9 +1,50 @@
 @import 'variables';
 
-img {
-  width: 100%;
+.event-cover-image {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .event-members {
   margin: 2rem;
+  padding: 4px;
+}
+
+.event-comments {
+  img {
+       width: 30px;
+       height: 30px;
+  }
+}
+
+p.comments-bubble {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+
+}
+  .comments-bubble:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid $button-gradient-color;
+    border-right: 15px solid transparent;
+    border-top: 15px solid $button-gradient-color;
+    border-bottom: 15px solid transparent;
+    right: -16px;
+    top: 0px;
+
+}
+
+hr {
+  width: 60%;
+  margin-bottom: 0;
+  border-width: 0;
+  border-top: 1px solid #fafafa;
 }
