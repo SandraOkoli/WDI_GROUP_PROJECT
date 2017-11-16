@@ -5,7 +5,7 @@ const { db } = require('../config/environment');
 const User = require('../models/user');
 const Event = require('../models/event');
 
-mongoose.connect(db['development'], { useMongoClient: true });
+mongoose.connect(db.[env], { useMongoClient: true });
 
 User.collection.drop();
 Event.collection.drop();
@@ -80,8 +80,7 @@ User
         attendees: users[0].id ,
         comments: {
           createdBy: users[0].id,
-          content: 'Great will be ready in 10 minutes',
-          timeStamp: 'December 13, 2017 20:00:00'
+          content: 'Great will be ready in 10 minutes'
         }
       },{
         name: 'GA Graduation drinks',
@@ -90,15 +89,14 @@ User
           lng: -0.082898
         },
         type: 'Party',
-        coverImage: 'https://uticket.ie/assets/29/img/background.jpg',
+        coverImage: 'https://nourish.schnucks.com/wp-content/uploads/2016/05/Grad6.jpg',
         description: 'Graduation party',
         dateTime: 'December 15, 2017 19:00:00',
         owner: users[0].id,
         attendees: users[0].id,
         comments: {
           createdBy: users[0].id,
-          content: 'Great will be ready in 10 minutes',
-          timeStamp: ''
+          content: 'Great will be ready in 10 minutes'
         }
       }]);
   })
