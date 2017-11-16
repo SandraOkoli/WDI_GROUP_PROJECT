@@ -64,9 +64,6 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
           map: map,
           animation: $window.google.maps.Animation.DROP
         });
-<<<<<<< HEAD
-        
-=======
 
         marker.addListener('click', function() {
           infowindow.open(map, marker);
@@ -89,7 +86,6 @@ function googleMap($window, $timeout, $rootScope, $compile, Event, currentUserSe
 
         const infoWindowHtml = $compile(contentString)(scope);
 
->>>>>>> development
         // add info window for marker
         const infowindow = new $window.google.maps.InfoWindow({
           content: infoWindowHtml[0]
