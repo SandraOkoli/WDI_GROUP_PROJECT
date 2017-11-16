@@ -2,8 +2,10 @@ angular
   .module('outApp')
   .controller('eventsShowController', eventsShowController);
 
+
 eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService'];
 function eventsShowController(Event, $stateParams, $state, User, currentUserService) {
+
   const vm = this;
   vm.arrOfAttendees = [];
   vm.arrOfCommenters = [];
@@ -41,6 +43,15 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
               });
           }
         });
+
+      for (var i = 0; i < vm.event.attendees.length; i++) {
+        User
+          .get({ id: vm.event.attendees[i] })
+          .$promise
+          .then(user => {
+            vm.arrOfAttendees.push(user);
+          });
+      }
     });
 
   vm.delete = event => {
@@ -61,6 +72,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
         vm.event.comments = data.comments;
       });
   };
+
   vm.deleteComment = comment => {
     Event
       .deleteComment({ id: vm.event._id, commentId: comment._id})
@@ -72,7 +84,6 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   };
 
   vm.joinEvent = () => {
-
     const there = contains(vm.event.attendees,currentUserService.currentUser.id );
     there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
 
@@ -85,5 +96,4 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
       return false;
     }
   };
-
 }

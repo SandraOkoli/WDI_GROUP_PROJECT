@@ -1,6 +1,29 @@
 <main>
 
 
+
+  <div class="accordbox">
+      <div class="tab" ng-repeat="event in vm.events">
+        <input id="tab-{{ event.name}}" type="checkbox" name="tabs">
+        <label for="tab-{{ event.name}}" class="accordlabel"><span class=event-name>{{event.name}}</span> <span class="date-title">{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
+        <div class="tab-content">
+
+          <p>{{ event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+          <p>{{event.owner}}</p>
+          <button class="button-primary" ui-sref="eventsShow({ id: event._id })">show</button>
+
+          <button class="button-primary" ui-sref="eventsShow({ id: event._id })">Edit</button>
+
+          <p>{{event.description}} sdkasldksadlasdaskdasd</p>
+        </div>
+      </div>
+  </div>
+
+  <input type="checkbox" id="event-trigger" class="event-trigger" />
+  <label for="event-trigger"></label>
+
+  <div class="site-wrap">
+
   <div class="row">
     <div class="ten columns">
       <img class="event-cover-image" ng-src="{{ vm.event.coverImage }}">
@@ -25,6 +48,7 @@
     <div class="twelve columns">
         <hr>
       <div class="event-members">
+        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
         <img ng-repeat="attendee in vm.arrOfAttendees" class="sml-avatar-attendee" ng-src=" {{ attendee.avatar }}">
       </div>
     </div>
@@ -76,4 +100,6 @@
 
     </div>
   </div>
+</div>
+
 </main>
