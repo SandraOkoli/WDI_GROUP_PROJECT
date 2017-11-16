@@ -1,4 +1,6 @@
 <main>
+
+
   <div class="row">
     <div class="ten columns">
       <img class="event-cover-image" ng-src="{{ vm.event.coverImage }}">
@@ -11,7 +13,7 @@
         <h1>{{ vm.event.name }}</h1>
         <p>{{ vm.event.description }}</p>
         <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
-        <img src="../images/delete-icon.png"ng-click="vm.delete(vm.event)">
+        <img src="../images/delete-icon.png" ng-click="vm.delete(vm.event)">
         <img src="../images/edit-icon.png" ui-sref="eventsEdit({ id: vm.event._id })">
         <!-- <button class="button-primary" ui-sref="eventsEdit({ id: vm.event._id })">Edit</button> -->
       </div>
@@ -22,8 +24,7 @@
         <hr>
       <div class="event-members">
         <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
-        <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees.avatar }}">
-        <!-- Will need to change when we have an array of users -->
+        <img ng-repeat="attendee in vm.arrOfAttendees" class="sml-avatar-attendee" ng-src=" {{ attendee.avatar }}">
       </div>
     </div>
   </div>
@@ -53,6 +54,7 @@
           <button class="button-primary">Post a comment</button>
           <!-- <h2>{{ comment.timeStamp |  amDifference : null : 'hours' }}</h2> -->
         </form>
+        <button class="button-primary" ng-click="vm.joinEvent()">Join event</button>
       </div>
     </div>
   </div>
