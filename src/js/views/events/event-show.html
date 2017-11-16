@@ -24,8 +24,7 @@
         <hr>
       <div class="event-members">
         <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
-        <img class="sml-avatar-attendee" ng-src=" {{ vm.event.attendees.avatar }}">
-        <!-- Will need to change when we have an array of users -->
+        <img ng-repeat="attendee in vm.arrOfAttendees" class="sml-avatar-attendee" ng-src=" {{ attendee.avatar }}">
       </div>
     </div>
   </div>
