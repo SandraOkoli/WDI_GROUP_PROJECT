@@ -3,18 +3,18 @@ const morgan          = require('morgan');
 const bodyParser      = require('body-parser');
 const expressJWT      = require('express-jwt');
 const router          = require('./config/routes');
-const { db, port }    = require('./config/environment');
+const { db, port, env }    = require('./config/environment');
 const customResponses = require('./lib/customResponses');
 const errorHandler    = require('./lib/errorHandler');
 const cors            = require('cors');
 
 const app             = express();
-const environment   = app.get('env');
+// const environment   = app.get('env');
 app.use(cors());
 
 const mongoose        = require('mongoose');
 mongoose.Promise      = require('bluebird');
-mongoose.connect(db[environment], { useMongoClient: true });
+mongoose.connect(db[env], { useMongoClient: true });
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
