@@ -2,8 +2,10 @@ angular
   .module('outApp')
   .controller('eventsShowController', eventsShowController);
 
-eventsShowController.$inject = ['Event','$stateParams','$state', 'User'];
-function eventsShowController(Event, $stateParams, $state, User) {
+
+eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService'];
+function eventsShowController(Event, $stateParams, $state, User, currentUserService) {
+
   const vm = this;
   vm.arrOfAttendees = [];
   vm.events = Event.query();
@@ -18,32 +20,16 @@ function eventsShowController(Event, $stateParams, $state, User) {
         .get({ id: vm.event.owner })
         .$promise
         .then(user => {
-<<<<<<< HEAD
           vm.event.owner = user.avatar;
         });
 
-      //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
       User
         .get({ id: vm.event.attendees })
         .$promise
         .then(user => {
           vm.event.attendees = user.avatar;
-        });
-=======
           vm.event.owner = user;
-
-          for (var i = 0; i < vm.event.attendees.length; i++) {
-            User
-              .get({ id: vm.event.attendees[i] })
-              .$promise
-              .then(user => {
-                vm.arrOfAttendees.push(user);
-              });
-          }
         });
-
-      //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
->>>>>>> 2fc75eebce5bcb7eb835d05daf80e87c0682ed1d
 
       User
         .get({ id: vm.event.comments.createdBy })
@@ -51,6 +37,15 @@ function eventsShowController(Event, $stateParams, $state, User) {
         .then(user => {
           vm.event.comments.createdBy = user.avatar;
         });
+
+      for (var i = 0; i < vm.event.attendees.length; i++) {
+        User
+          .get({ id: vm.event.attendees[i] })
+          .$promise
+          .then(user => {
+            vm.arrOfAttendees.push(user);
+          });
+      }
     });
 
   vm.delete = event => {
@@ -71,6 +66,7 @@ function eventsShowController(Event, $stateParams, $state, User) {
         vm.event.comments = data.comments;
       });
   };
+
   vm.deleteComment = comment => {
     Event
       .deleteComment({ id: vm.event._id, commentId: comment._id})
@@ -80,11 +76,8 @@ function eventsShowController(Event, $stateParams, $state, User) {
         vm.event.comments.splice(index, 1);
       });
   };
-<<<<<<< HEAD
-=======
 
   vm.joinEvent = () => {
-
     const there = contains(vm.event.attendees,currentUserService.currentUser.id );
     there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
 
@@ -97,6 +90,4 @@ function eventsShowController(Event, $stateParams, $state, User) {
       return false;
     }
   };
-
->>>>>>> 2fc75eebce5bcb7eb835d05daf80e87c0682ed1d
 }
