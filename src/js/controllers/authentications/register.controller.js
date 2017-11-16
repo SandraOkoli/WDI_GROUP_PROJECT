@@ -37,7 +37,7 @@ function registerController(
       .then(() => $auth.login(vm.user))
       .then(() => {
         currentUserService.getUser();
-        $state.go('home');
+        $state.go('eventsIndex');
       });
   }
 

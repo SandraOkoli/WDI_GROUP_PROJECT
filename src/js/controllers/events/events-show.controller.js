@@ -2,9 +2,12 @@ angular
   .module('outApp')
   .controller('eventsShowController', eventsShowController);
 
-eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService'];
-function eventsShowController(Event, $stateParams, $state, User, currentUserService) {
+eventsShowController.$inject = ['Event','$stateParams','$state', 'User'];
+function eventsShowController(Event, $stateParams, $state, User) {
   const vm = this;
+
+  vm.events = Event.query();
+
 
 
 
@@ -18,24 +21,22 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
         .get({ id: vm.event.owner })
         .$promise
         .then(user => {
-          vm.event.owner = user;
+          vm.event.owner = user.avatar;
         });
-
-
 
       //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
       User
         .get({ id: vm.event.attendees })
         .$promise
         .then(user => {
-          vm.event.attendees = user;
+          vm.event.attendees = user.avatar;
         });
 
       User
         .get({ id: vm.event.comments.createdBy })
         .$promise
         .then(user => {
-          vm.event.comments.createdBy = user;
+          vm.event.comments.createdBy = user.avatar;
         });
     });
 
@@ -66,22 +67,4 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
         vm.event.comments.splice(index, 1);
       });
   };
-
-  vm.joinEvent = () => {
-
-    console.log(vm.event.attendees);
-
-    const there =contains(vm.event.attendees,currentUserService.currentUser.id );
-    there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
-
-function contains(a,obj){
-      for (var i = 0; i < a.length; i++) {
-        if (a[i] === obj) {
-          return true;
-        }
-      }
-      return false;
-    }
-  };
-
 }
