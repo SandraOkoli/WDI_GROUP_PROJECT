@@ -1,26 +1,50 @@
 <h1>Update your Profile</h1>
+<div class="container">
+  <form ng-submit="vm.submit(vm.user)">
+    <div class="row">
+      <div class="twelve columns">
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" ng-model="vm.user.firstName" class="form-control">
+      </div>
+    </div>
 
-<form ng-submit="vm.submit(vm.user)">
-  <div>
-    <label for="firstName">First Name:</label>
-    <input type="text" name="firstName" id="firstName" ng-model="vm.user.firstName" class="form-control">
-  </div>
-  <div>
-    <label for="lastName">Last Name:</label>
-    <input type="text" name="lastName" id="lastName" ng-model="vm.user.lastName" class="form-control">
-  </div>
-  <div>
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email" ng-model="vm.user.email" class="form-control">
-  </div>
-  <!-- <div>
-    <label for="avatar">Avatar:</label>
-    <input type="text" name="avatar" id="avatar" ng-model="vm.user.avatar">
-  </div> -->
-  <div>
-    <label for="avatar">Your avatar (optional):</label>
-    <button name="image" id="avatar" ng-model="vm.user.avatar" ng-click="vm.pickFile($event)">Pick</button>
-    <img class="lrge-avatar" ng-if="vm.user.avatar" ng-src="{{ vm.user.avatar }}">
-  </div>
-  <input class="button-primary" type="submit" value="Update">
-</form>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" ng-model="vm.user.lastName" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" ng-model="vm.user.email" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <label for="avatar">Your avatar (optional):</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <button name="image" id="avatar" ng-model="vm.user.avatar"
+        ng-click="vm.pickFile($event)">Pick</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <img class="lrge-avatar" ng-if="vm.user.avatar" ng-src="{{ vm.user.avatar }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <input class="button-primary" type="submit" value="Update">
+      </div>
+    </div>
+  </form>
+</div>
