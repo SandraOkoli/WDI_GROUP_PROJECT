@@ -4,3 +4,19 @@
   background-image: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
   border: none;
 }
+
+.button-join {
+  background-image: linear-gradient(19deg, red 0%,  yellow 100%);
+}
+
+.lightbuttons {
+  color: white;
+  text-decoration:none;
+  font-size: 2em;
+  font-weight: 100;
+  margin: 40px;
+
+}
+.lightbuttons :hover {
+  color: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+}

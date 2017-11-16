@@ -4,7 +4,7 @@ $primary-bg-color: black;
 $primary-text-color: white;
 $primary-link-color: orange;
 
-$secondary-bg-color: beige;
+$secondary-bg-color: #191970;
 $secondary-text-color: grey;
 $secondary-link-color: teal;
 
@@ -22,3 +22,6 @@ $button-gradient-color: #B721FF;
 
 $avatar-owner-bg-color: #21D4FD;
 $avatar-attendee-bg-color: #B721FF;
+
+$main-gradient: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+$bg-gradient: linear-gradient(19deg, #282831 0%, #262626 100%);
