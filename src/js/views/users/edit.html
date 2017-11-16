@@ -13,14 +13,11 @@
     <label for="email">Email:</label>
     <input type="text" name="email" id="email" ng-model="vm.user.email" class="form-control">
   </div>
-  <!-- <div>
-    <label for="avatar">Avatar:</label>
-    <input type="text" name="avatar" id="avatar" ng-model="vm.user.avatar">
-  </div> -->
   <div>
     <label for="avatar">Your avatar (optional):</label>
-    <button name="image" id="avatar" ng-model="vm.user.avatar" ng-click="vm.pickFile($event)">Pick</button>
+    <button class="button-primary" ng-model="vm.user.avatar" ng-click="vm.pickFile($event)">Choose</button>
     <img class="lrge-avatar" ng-if="vm.user.avatar" ng-src="{{ vm.user.avatar }}">
   </div>
-  <input class="button-primary" type="submit" value="Update">
+
+  <button class="button-primary"> Update</button>
 </form>

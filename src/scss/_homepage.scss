@@ -1,18 +1,17 @@
 @import 'variables';
 
-.imageContainer {
+.image-container {
   height: 100%;
   width: 100%;
 }
 
-.imageContent{
-  background-image: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
-  background-size: auto 100%;
+body {
+  .home-background {
+    background: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+    background-size: auto 100%;
+  }
 
 }
-
-
-
 
   .mainbox {
   height: 500px;
