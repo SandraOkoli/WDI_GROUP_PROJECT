@@ -7,7 +7,13 @@ eventsEditController.$inject = [ 'Event', '$stateParams', '$state', '$scope', 'f
 function eventsEditController(Event, $stateParams, $state, $scope, filepickerService ) {
   const vm = this;
 
-  vm.event = Event.get($stateParams);
+  Event
+    .get($stateParams)
+    .$promise
+    .then((event)=> {
+      vm.event = event;
+      vm.event.dateTime = new Date(event.dateTime);
+    });
 
   vm.submit = event => {
     Event

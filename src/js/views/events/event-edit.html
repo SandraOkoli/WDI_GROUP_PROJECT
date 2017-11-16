@@ -11,6 +11,7 @@
     <div class="twelve columns">
       <label for="image">Cover Image:</label>
       <button name="image" id="image" ng-model="vm.event.coverImage" ng-click="vm.pickFile($event)">Pick</button>
+      <img ng-if="vm.event.coverImage" ng-src="{{ vm.event.coverImage }}">
     </div>
   </div>
   <div class="row">
