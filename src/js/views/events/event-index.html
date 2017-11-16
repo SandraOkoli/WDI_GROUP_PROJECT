@@ -4,7 +4,7 @@
 <div class="accordbox">
     <div class="tab" ng-repeat="event in vm.events">
       <input id="tab-{{ event.name}}" type="checkbox" name="tabs">
-      <label for="tab-{{ event.name}}" class="accordlabel"><span class=event-name>{{event.name}}</span> <span class="date-title">{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
+      <label for="tab-{{ event.name}}" class="accordlabel"><span class="event-name">{{event.name}}</span> <span class="date-title">{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
       <div class="tab-content">
 
 

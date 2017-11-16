@@ -6,10 +6,6 @@ const commentsSchema = new mongoose.Schema({
   timeStamp: { type: Date }
 });
 
-const attendeesSchema = new mongoose.Schema({
-  attendee: { type: mongoose.Schema.ObjectId, ref: 'User' }
-});
-
 commentsSchema.methods.belongsTo = function commentBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
