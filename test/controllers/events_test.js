@@ -26,15 +26,19 @@ describe('Event tests', ()=> {
         lat: 32,
         lng: 34
       },
+      coverImage: 'www.fillmurray.com/300/300',
       type: 'stag',
       description: 'stag party',
       dateTime: '34632',
-      owner: 'Dave',
-      attendees: 'Sally'
+      owner: '5a0b606e9f16a022c800353a',
+      attendees: '5a0b606e9f16a022c800353a'
     })
       .then(() => done())
       .catch(done);
   });
+
+
+
 
   it('should return an array of events', function(done) {
     api
@@ -55,12 +59,14 @@ describe('Event tests', ()=> {
           .and.have.property(0)
           .and.have.all.keys([
             'name',
+            'coverImage',
             'location',
             'type',
             'description',
             'dateTime',
             'owner',
             'attendees',
+            'comments',
             '__v',
             '_id'
 
@@ -112,24 +118,26 @@ describe('Event tests', ()=> {
             lat: 32,
             lng: 34
           },
+          coverImage: 'www.fillmurray.com/300/300',
           type: 'stag',
           description: 'stag party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
 
         },
         {
-          name: 'Wedding',
+          name: 'birthday party',
           location: {
-            lat: 33,
-            lng: 42
+            lat: 20,
+            lng: 31
           },
-          type: 'wedding',
-          description: 'wedding party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Sally',
-          attendees: 'Brock'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         }
       ])
         .then(() => done())
@@ -153,16 +161,17 @@ describe('Event tests', ()=> {
         .post('/api/events')
         .set('Accept', 'application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'stag party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
 
         })
         .expect(201, done);
@@ -174,16 +183,17 @@ describe('Event tests', ()=> {
         .set('Accept', 'application/json')
         .send({
           event: {
-            name: 'Party',
+            name: 'birthday party',
             location: {
-              lat: 32,
-              lng: 34
+              lat: 20,
+              lng: 31
             },
-            type: 'stag',
-            description: 'stag party',
+            coverImage: 'www.fillmurray.com/300/250',
+            type: 'birthday',
+            description: 'birthday party',
             dateTime: '34632',
-            owner: 'Dave',
-            attendees: 'Sally'
+            owner: '5a0b606e9f16a022c800353a',
+            attendees: '5a0b606e9f16a022c800353a'
           }
         })
         .end((err, res) => {
@@ -235,16 +245,17 @@ describe('Event tests', ()=> {
 
     beforeEach(done => {
       Event.create({
-        name: 'Party',
+        name: 'birthday party',
         location: {
-          lat: 32,
-          lng: 34
+          lat: 20,
+          lng: 31
         },
-        type: 'stag',
-        description: 'stag party',
+        coverImage: 'www.fillmurray.com/300/250',
+        type: 'birthday',
+        description: 'birthday party',
         dateTime: '34632',
-        owner: 'Dave',
-        attendees: 'Sally'
+        owner: '5a0b606e9f16a022c800353a',
+        attendees: '5a0b606e9f16a022c800353a'
       })
         .then(eventData => {
           eventer = eventData;
@@ -281,16 +292,17 @@ describe('Event tests', ()=> {
 
     beforeEach(done => {
       Event.create({
-        name: 'Party',
+        name: 'birthday party',
         location: {
-          lat: 32,
-          lng: 34
+          lat: 20,
+          lng: 31
         },
-        type: 'stag',
-        description: 'stag party',
+        coverImage: 'www.fillmurray.com/300/250',
+        type: 'birthday',
+        description: 'birthday party',
         dateTime: '34632',
-        owner: 'Dave',
-        attendees: 'Sally'
+        owner: '5a0b606e9f16a022c800353a',
+        attendees: '5a0b606e9f16a022c800353a'
       })
         .then(eventData => {
           testEvent = eventData;
@@ -304,16 +316,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'Updated party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'stag party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
@@ -323,16 +336,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 42,
-            lng: 50
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'stag party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
@@ -342,16 +356,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'night of freedom',
-          description: 'stag party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
@@ -361,16 +376,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'Mike\'s stag do!',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
@@ -380,16 +396,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept','application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'stag party',
-          dateTime: '36632',
-          owner: 'Dave',
-          attendees: 'Sally'
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
+          dateTime: '34632',
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
@@ -399,16 +416,17 @@ describe('Event tests', ()=> {
         .put(`/api/events/${testEvent.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'Party',
+          name: 'birthday party',
           location: {
-            lat: 32,
-            lng: 34
+            lat: 20,
+            lng: 31
           },
-          type: 'stag',
-          description: 'stag party',
+          coverImage: 'www.fillmurray.com/300/250',
+          type: 'birthday',
+          description: 'birthday party',
           dateTime: '34632',
-          owner: 'Dave',
-          attendees: 'Sally, Mike, Nathan'
+          owner: '5a0b606e9f16a022c800353a',
+          attendees: '5a0b606e9f16a022c800353a'
         })
         .expect(200, done);
     });
