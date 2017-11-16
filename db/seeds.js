@@ -79,7 +79,7 @@ User
         type: 'Birthday',
         coverImage: 'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
         description: 'Donnie boy turns 90. Let\'s celebrate!',
-        dateTime: 'December 13, 2017 20:00:00',
+        dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: [users[0],users[1],users[2]],
         comments: {
@@ -95,7 +95,7 @@ User
         type: 'Party',
         coverImage: 'https://nourish.schnucks.com/wp-content/uploads/2016/05/Grad6.jpg',
         description: 'Graduation party',
-        dateTime: 'December 15, 2017 19:00:00',
+        dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: [users[0].id],
         comments: {
