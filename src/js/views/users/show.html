@@ -1,10 +1,10 @@
 <section>
-  <div>
-    <img class= "lrge-avatar" src="{{ vm.user.avatar }}"
-    <p>{{ vm.user.firstName }}  {{ vm.user.lastName }} </p>
+  <div class="row">
+  <div class="twelve columns">
+    <img class= "lrge-avatar" src="{{ vm.user.avatar }}">
+    <p>{{ vm.user.firstName }} {{ vm.user.lastName }}</p>
     <p>Email: {{ vm.user.email }}</p>
+    <button class="button-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit</button>
   </div>
-
-<a class="button button-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit</a>
-
+</div>
 </section>

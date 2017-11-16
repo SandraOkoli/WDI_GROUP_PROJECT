@@ -74,7 +74,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
     const there =contains(vm.event.attendees,currentUserService.currentUser.id );
     there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
 
-function contains(a,obj){
+    function contains(a,obj){
       for (var i = 0; i < a.length; i++) {
         if (a[i] === obj) {
           return true;
