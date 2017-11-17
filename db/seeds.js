@@ -82,10 +82,15 @@ User
         dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: [users[0].id,users[1].id,users[2].id],
-        comments: {
-          createdBy: users[0].id,
-          content: 'Great will be ready in 10 minutes'
-        }
+        comments: [
+          {
+            createdBy: users[0].id,
+            content: 'Great will be ready in 10 minutes'
+          },{
+            createdBy: users[1].id,
+            content: 'OK see you soon'
+          }
+        ]
       },{
         name: 'GA Graduation drinks',
         location: {
@@ -98,10 +103,15 @@ User
         dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
         attendees: [users[0].id],
-        comments: {
-          createdBy: users[0].id,
-          content: 'Great will be ready in 10 minutes'
-        }
+        comments: [
+          {
+            createdBy: users[0].id,
+            content: 'Great will be ready in 10 minutes'
+          },{
+            createdBy: users[1].id,
+            content: 'OK see you soon'
+          }
+        ]
       }]);
   })
   .then((events) => console.log(`${events.length} events created`))
