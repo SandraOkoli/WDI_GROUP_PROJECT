@@ -66,9 +66,13 @@
         <ul>
           <li ng-repeat="comment in vm.event.comments track by $index">
             <span><img class="sml-avatar-owner" ng-src="{{ comment.createdBy.avatar }}"></span>
+            <p>{{ comment.createdAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+            <!-- <span>{{am-time-ago="comment.createdAt | amParse:'YYYY-MM-DD HH:mm:ss'"}}</span> -->
             <span><p class="comments-bubble">{{ comment.content }} </p></span>
             <span><img src="../images/delete-icon.png" ng-click="vm.deleteComment(comment)"></span>
-            <!-- <p>{{ comment.timeStamp | am-time-ago: 'dddd, MMMM Do YYYY, h:mm a' }}</p> -->
+
+            <!-- <p>{{ am-time-ago="comment.createdAt | amParse:'YYYY.MM.DD HH:mm:ss'" }}</p> -->
+
           </li>
         </ul>
         <form ng-submit="vm.createComment()">
