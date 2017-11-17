@@ -1,5 +1,5 @@
 @import 'variables';
-
+@import 'eventindex';
 
 .menu-button {
   background: none;
@@ -104,6 +104,22 @@ label[for="event-trigger"] {
     box-shadow: 0 5px 0 5px rgba(0,0,0,0.5);
 }
 
+@media screen and (max-width: 400px){
+  .event-trigger:checked ~ .indexbox {
+    left:400px;
+  }
+  .event-trigger:checked + label {
+      left: 0px;
+  }
+}
+
+
+
+@media screen and (max-width: 1240px){
+  .event-trigger:checked ~ .indexbox {
+    left:400px;
+  }
+}
 
 .event-trigger + label, .site-wrap {
     transition: left 0.2s;
