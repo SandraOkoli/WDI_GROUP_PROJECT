@@ -18,6 +18,9 @@ function eventsCreate(req, res){
 function eventsShow(req, res){
   Event
     .findById(req.params.id)
+    .populate('owner')
+    .populate('attendees')
+    .populate('comments.createdBy')
     .exec()
     .then(event =>{
       if(!event){
