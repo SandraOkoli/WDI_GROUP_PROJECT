@@ -30,7 +30,11 @@
   position:relative;
   z-index: 2;
   font-family: $font-family;
+
   }
+
+
+  
 
   .picbox {
   height: 500px;
@@ -52,9 +56,11 @@
   @media screen and (min-width: 480px) {
     .picbox {
       display: inline-block;
+
     }
     .mainbox {
       position: absolute;
+
     }
 }
 

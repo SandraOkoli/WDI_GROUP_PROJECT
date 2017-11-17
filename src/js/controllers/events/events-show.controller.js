@@ -9,6 +9,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   const vm = this;
 
   vm.currentUser = currentUserService.currentUser.id;
+  vm.events = Event.query();
 
   Event
     .get($stateParams)

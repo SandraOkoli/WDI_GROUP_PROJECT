@@ -44,7 +44,7 @@ function Router(
     .state('eventsIndex', {
       url: '/events',
       templateUrl: 'js/views/events/event-index.html',
-      controller: 'eventsIndexController as vm'
+      controller: 'eventsShowController as vm'
     })
     .state('eventsNew', {
       url: '/events/new',
