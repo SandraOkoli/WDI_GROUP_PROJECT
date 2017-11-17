@@ -50,6 +50,7 @@ function eventsUpdate(req, res){
 function commentsCreate(req, res, next) {
   Event
     .findById(req.params.id)
+    .populate('comments.createdBy')
     .exec()
     .then(event => {
       if (!event) return res.notFound();
