@@ -10,6 +10,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   vm.arrOfAttendees = [];
   vm.arrOfCommenters = [];
   vm.currentUser = currentUserService.currentUser.id;
+  vm.events = Event.query();
 
   Event
     .get($stateParams)
