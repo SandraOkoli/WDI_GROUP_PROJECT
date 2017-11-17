@@ -10,6 +10,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
 
   vm.currentUser = currentUserService.currentUser.id;
   vm.events = Event.query();
+  console.log(vm);
 
   Event
     .get($stateParams)
@@ -51,8 +52,8 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   };
 
   vm.joinEvent = () => {
-    const there = contains(vm.event.attendees,currentUserService.currentUser.id );
-    there === true ? console.log('already there'):   vm.event.attendees.push(currentUserService.currentUser.id);
+    const there = contains(vm.event.attendees,currentUserService.currentUser );
+    there === true ? console.log('already there'): vm.event.attendees.push(currentUserService.currentUser);
 
     function contains(a,obj){
       for (var i = 0; i < a.length; i++) {
