@@ -17,26 +17,13 @@ function eventsShowController(
   currentUserService
 ) {
   const vm = this;
-  vm.arrOfAttendees = [];
+
+  vm.currentUser = currentUserService.currentUser.id;
+  vm.events = Event.query();
+  console.log(vm);
 
   Event.get($stateParams).$promise.then(event => {
     vm.event = event;
-
-    User.get({ id: vm.event.owner }).$promise.then(user => {
-      vm.event.owner = user;
-
-      for (var i = 0; i < vm.event.attendees.length; i++) {
-        User.get({ id: vm.event.attendees[i] }).$promise.then(user => {
-          vm.arrOfAttendees.push(user);
-        });
-      }
-    });
-
-    //this will only work for the current model where attendees is String. WIll need to refactor when the model is changed to an array of users
-
-    User.get({ id: vm.event.comments.createdBy }).$promise.then(user => {
-      vm.event.comments.createdBy = user;
-    });
   });
 
   vm.delete = event => {
@@ -46,11 +33,21 @@ function eventsShowController(
   };
 
   vm.createComment = () => {
-    Event.addComment({ id: vm.event._id }, vm.comment).$promise.then(data => {
-      vm.comment = {};
-      vm.event.comments = data.comments;
-    });
+    const commentObject = {
+      createdBy: vm.currentUser,
+      content: vm.comment.content
+    };
+    Event.addComment({ id: vm.event._id }, commentObject).$promise.then(
+      data => {
+        vm.comment = {};
+        vm.event.comments = data.comments;
+
+        vm.event.comments[vm.event.comments.length - 1].createdBy =
+          currentUserService.currentUser;
+      }
+    );
   };
+
   vm.deleteComment = comment => {
     Event.deleteComment({
       id: vm.event._id,
@@ -64,13 +61,10 @@ function eventsShowController(
   };
 
   vm.joinEvent = () => {
-    const there = contains(
-      vm.event.attendees,
-      currentUserService.currentUser.id
-    );
+    const there = contains(vm.event.attendees, currentUserService.currentUser);
     there === true
       ? console.log('already there')
-      : vm.event.attendees.push(currentUserService.currentUser.id);
+      : vm.event.attendees.push(currentUserService.currentUser);
 
     function contains(a, obj) {
       for (var i = 0; i < a.length; i++) {

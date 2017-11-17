@@ -1,9 +1,9 @@
 @import 'variables';
 
 nav {
-  background: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+  background: linear-gradient(19deg, #282831 0%, #262626 100%);
   background-repeat: no-repeat;
-  border: none;
+  border: 2px solid black;
   padding: 10px;
   width: 100%;
 
@@ -25,4 +25,24 @@ nav {
   .welcome-message {
     float: left;
   }
+}
+
+
+.stripe {
+background: linear-gradient(19deg, $button-bg-color 0%, $button-gradient-color 100%);
+width: 100%;
+height: 5px;
+
+}
+
+.navlogo {
+  height:40px;
+  float: right;
+  margin-right: 20px;
+  margin-top: -10px;
+  cursor:pointer;
+}
+
+.starternav {
+  text-align: left;
 }

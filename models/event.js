@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
-const commentsSchema = new mongoose.Schema({
-  content: { type: String, required: true },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  timeStamp: { type: Date }
-});
+const commentsSchema = new mongoose.Schema(
+  {
+    content: { type: String, required: true },
+    createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  },
+  {
+    timestamps: true
+  }
+);
 
 commentsSchema.methods.belongsTo = function commentBelongsTo(user) {
   if (typeof this.createdBy.id === 'string')

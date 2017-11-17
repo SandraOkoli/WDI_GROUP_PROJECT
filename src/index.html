@@ -4,8 +4,10 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYkwg3vuWOswzHQfsuz3U0ki4gz0tkQ6Y&libraries=places&sensor=false"></script>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WDI Project 3: Out?</title>
     <base href="/" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -13,14 +15,16 @@
   </head>
   <body ng-controller="mainController as main">
     <nav>
-      <p class="welcome-message" ng-if="main.user">Hello {{ main.user.firstName}}</p>
-      <li><a ui-sref="home">Home</a></li>
-      <!-- <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
-      <li ng-if="!main.user"><a ui-sref="register">Register</a></li> -->
-      <li ng-if="main.user"><a ui-sref="usersShow({{ main.user }})">Your profile</a></li>
+      <li ng-if="!main.user"><a ui-sref="home" class="starternav">Login</a></li>
+      <li ng-if="!main.user"><a ui-sref="register" class="starternav">Register</a></li>
       <li ng-if="main.user"><a ui-sref="eventsIndex">Events</a></li>
-      <li ng-if="main.user"><a ui-sref="eventsNew({{ main.user }})">Create your event</a></li>
+      <li ng-if="main.user"><a ui-sref="eventsNew({{ main.user }})">Create</a></li>
       <li ng-if="main.user"><a ng-click="main.logout()">Logout</a></li>
+      <p class="welcome-message" ng-if="main.user">{{ main.user.firstName}} is Out</p>
+
+      <img ng-src="../images/outlogocolor.png" alt="out" class="navlogo" ui-sref="eventsIndex">
+
+      <div class="stripe"></div>
     </nav>
     <main ui-view>
 
