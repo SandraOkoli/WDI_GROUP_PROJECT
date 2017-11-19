@@ -22,19 +22,22 @@
   <div class="site-wrap">
 
   <div class="row">
-    <div class="ten columns">
+    <div class="twelve columns">
+      <h1>{{ vm.event.name }}</h1>
       <img class="event-cover-image" ng-src="{{ vm.event.coverImage }}">
+      <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
     </div>
   </div>
   <div class="row">
     <div class="twelve columns">
       <div class="event-info">
-        <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
-        <h1>{{ vm.event.name }}</h1>
-        <p>{{ vm.event.description }}</p>
-        <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
-        <img src="../images/delete-icon.png" ng-click="vm.delete(vm.event)">
-        <img src="../images/edit-icon.png" ui-sref="eventsEdit({ id: vm.event._id })">
+
+        <!-- <img class="lrge-avatar" ng-src="{{ vm.event.owner.avatar }}"> -->
+
+        <p>{{ vm.event.description }} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="#"><img src="../images/delete-circle.png" ng-click="vm.delete(vm.event)"></a>
+        <a href="#"><img src="../images/edit-button.png" ui-sref="eventsEdit({ id: vm.event._id })"></a>
+
         <div>
           <button class="button-primary" ng-click="vm.joinEvent()">Join event</button>
         </div>
@@ -46,6 +49,7 @@
         <hr>
       <div class="event-members">
         <img class="sml-avatar-owner" ng-src="{{ vm.event.owner.avatar }}">
+        <br>
         <img ng-repeat="attendee in vm.event.attendees" class="sml-avatar-attendee" ng-src=" {{ attendee.avatar }}">
       </div>
     </div>
@@ -66,10 +70,10 @@
         <ul>
           <li ng-repeat="comment in vm.event.comments track by $index">
             <span><img class="sml-avatar-owner" ng-src="{{ comment.createdBy.avatar }}"></span>
-            <p>{{ comment.createdAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
+            <p class="comment-time">{{ comment.createdAt | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
             <!-- <span>{{am-time-ago="comment.createdAt | amParse:'YYYY-MM-DD HH:mm:ss'"}}</span> -->
             <span><p class="comments-bubble">{{ comment.content }} </p></span>
-            <span><img src="../images/delete-icon.png" ng-click="vm.deleteComment(comment)"></span>
+            <span><img src="../images/delete-circle.png" ng-click="vm.deleteComment(comment)"></span>
 
             <!-- <p>{{ am-time-ago="comment.createdAt | amParse:'YYYY.MM.DD HH:mm:ss'" }}</p> -->
 

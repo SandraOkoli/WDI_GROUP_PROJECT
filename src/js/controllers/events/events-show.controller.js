@@ -3,21 +3,22 @@ angular
   .controller('eventsShowController', eventsShowController);
 
 
-eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService'];
-function eventsShowController(Event, $stateParams, $state, User, currentUserService) {
+eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService', 'moment'];
+function eventsShowController(Event, $stateParams, $state, User, currentUserService, moment) {
 
   const vm = this;
 
-  vm.currentUser = currentUserService.currentUser.id;
   vm.events = Event.query();
-  console.log(vm);
 
-  Event
-    .get($stateParams)
-    .$promise
-    .then(event => {
-      vm.event = event;
-    });
+  //if stateParams contains an id i.e. the user is not viewing the index page
+  if ($stateParams.id) {
+    Event
+      .get($stateParams)
+      .$promise
+      .then(event => {
+        vm.event = event;
+      });
+  }
 
   vm.delete = event => {
     Event
@@ -52,6 +53,8 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   };
 
   vm.joinEvent = () => {
+    vm.currentUser = currentUserService.currentUser.id;
+
     const there = contains(vm.event.attendees,currentUserService.currentUser );
     there === true ? console.log('already there'): vm.event.attendees.push(currentUserService.currentUser);
 

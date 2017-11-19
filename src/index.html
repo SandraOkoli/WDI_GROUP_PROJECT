@@ -3,6 +3,8 @@
   <head>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYkwg3vuWOswzHQfsuz3U0ki4gz0tkQ6Y&libraries=places&sensor=false"></script>
+    <!-- <script src="components/moment/moment.js"></script>
+    <script src="components/angular-moment/angular-moment.js"></script> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WDI Project 3: Out?</title>
@@ -15,7 +17,7 @@
   </head>
   <body ng-controller="mainController as main">
     <nav>
-    
+
       <li ng-if="!main.user"><a ui-sref="home" class="starternav">Login</a></li>
       <li ng-if="!main.user"><a ui-sref="register" class="starternav">Register</a></li>
       <li ng-if="main.user"><a ui-sref="eventsIndex">Events</a></li>
