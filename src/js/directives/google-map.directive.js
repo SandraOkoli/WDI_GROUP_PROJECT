@@ -31,7 +31,7 @@ function googleMap(
     link(scope, element) {
       let map;
 
-      scope.addAttendeeLocPref = function() {
+      scope.addAttendeeLocPref = () => {
         // inject Event factory, CurrentUserService.
         const currentAttendee = currentUserService.currentUser;
         const prefLoc = mapCenter;
@@ -42,13 +42,11 @@ function googleMap(
             lng: prefLoc.lng
           }
         };
-        console.log($stateParams);
+
         Event.addLocationPref(
           { id: $stateParams.id },
           newAttendeePref
-        ).$promise.then(data => {
-          console.log(data);
-        });
+        ).$promise.then(data => {});
       };
 
       $timeout(setMap, 200);
