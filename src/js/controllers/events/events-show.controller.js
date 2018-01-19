@@ -4,9 +4,11 @@ angular
 
 
 eventsShowController.$inject = ['Event','$stateParams','$state', 'User', 'currentUserService', 'moment'];
-function eventsShowController(Event, $stateParams, $state, User, currentUserService, moment) {
+function eventsShowController(Event, $stateParams, $state, User, currentUserService, $moment) {
 
   const vm = this;
+
+  console.log(moment().hour(8).minute(0).second(0).toDate());
 
   vm.events = Event.query();
 
@@ -17,6 +19,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
       .$promise
       .then(event => {
         vm.event = event;
+        // vm.event.comments.createdAt = $moment(comment.createdAt).fromNow();
       });
   }
 
