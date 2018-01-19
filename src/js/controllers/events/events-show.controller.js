@@ -24,35 +24,37 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
   }
 
   vm.delete = event => {
-    Event
-      .remove({ id: event._id })
-      .$promise
-      .then(() => {
-        $state.go('eventsIndex');
-      });
+    Event.remove({ id: event._id }).$promise.then(() => {
+      $state.go('eventsIndex');
+    });
   };
 
   vm.createComment = () => {
-    const commentObject = { 'createdBy': vm.currentUser, 'content': vm.comment.content  };
-    Event
-      .addComment({ id: vm.event._id }, commentObject)
-      .$promise
-      .then(data => {
+    const commentObject = {
+      createdBy: vm.currentUser,
+      content: vm.comment.content
+    };
+    Event.addComment({ id: vm.event._id }, commentObject).$promise.then(
+      data => {
         vm.comment = {};
         vm.event.comments = data.comments;
 
-        vm.event.comments[vm.event.comments.length -1 ].createdBy = currentUserService.currentUser;
-      });
+        vm.event.comments[vm.event.comments.length - 1].createdBy =
+          currentUserService.currentUser;
+      }
+    );
   };
 
   vm.deleteComment = comment => {
-    Event
-      .deleteComment({ id: vm.event._id, commentId: comment._id})
-      .$promise
-      .then(() => {
-        const index = vm.event.comments.map(comment => comment._id).indexOf(comment._id);
-        vm.event.comments.splice(index, 1);
-      });
+    Event.deleteComment({
+      id: vm.event._id,
+      commentId: comment._id
+    }).$promise.then(() => {
+      const index = vm.event.comments
+        .map(comment => comment._id)
+        .indexOf(comment._id);
+      vm.event.comments.splice(index, 1);
+    });
   };
 
   vm.joinEvent = () => {
@@ -61,7 +63,7 @@ function eventsShowController(Event, $stateParams, $state, User, currentUserServ
     const there = contains(vm.event.attendees,currentUserService.currentUser );
     there === true ? console.log('already there'): vm.event.attendees.push(currentUserService.currentUser);
 
-    function contains(a,obj){
+    function contains(a, obj) {
       for (var i = 0; i < a.length; i++) {
         if (a[i] === obj) {
           return true;

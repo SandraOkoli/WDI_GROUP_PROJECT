@@ -1,23 +1,13 @@
-angular
-  .module('outApp')
-  .controller('mainController', mainController);
+angular.module('outApp').controller('mainController', mainController);
 
-mainController.$inject = [
-  '$rootScope',
-  'currentUserService',
-  '$state'
-];
+mainController.$inject = ['$rootScope', 'currentUserService', '$state'];
 
-function mainController(
-  $rootScope,
-  currentUserService,
-  $state
-){
+function mainController($rootScope, currentUserService, $state) {
   const vm = this;
 
   vm.logout = logout;
 
-  function logout(){
+  function logout() {
     currentUserService.removeUser();
   }
 

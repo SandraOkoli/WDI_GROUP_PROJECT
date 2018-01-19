@@ -1,6 +1,4 @@
-angular
-  .module('outApp')
-  .controller('registerController', registerController);
+angular.module('outApp').controller('registerController', registerController);
 
 registerController.$inject = [
   '$state',
@@ -16,13 +14,13 @@ function registerController(
   currentUserService,
   filepickerService,
   $scope
-){
+) {
   const vm = this;
 
-  vm.pickFile = (e) => {
+  vm.pickFile = e => {
     e.preventDefault();
-    filepickerService.pick({mimetype: 'image/*'}, (Blob) => {
-      if (Blob && Blob.url){
+    filepickerService.pick({ mimetype: 'image/*' }, Blob => {
+      if (Blob && Blob.url) {
         vm.user.avatar = Blob.url;
         $scope.$apply();
       }
@@ -31,7 +29,7 @@ function registerController(
 
   vm.submitForm = register;
 
-  function register(){
+  function register() {
     $auth
       .signup(vm.user)
       .then(() => $auth.login(vm.user))
@@ -40,6 +38,4 @@ function registerController(
         $state.go('eventsIndex');
       });
   }
-
-
 }

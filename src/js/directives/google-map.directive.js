@@ -46,8 +46,7 @@ function googleMap(
         Event.addLocationPref(
           { id: $stateParams.id },
           newAttendeePref
-        ).$promise.then(data => {
-        });
+        ).$promise.then(data => {});
       };
 
       $timeout(setMap, 200);

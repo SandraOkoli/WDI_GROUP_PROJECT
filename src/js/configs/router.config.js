@@ -1,25 +1,14 @@
-angular
-  .module('outApp')
-  .config(Router);
+angular.module('outApp').config(Router);
 
-Router.$inject = [
-  '$stateProvider',
-  '$urlRouterProvider',
-  '$locationProvider'
-];
+Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-function Router(
-  $stateProvider,
-  $urlRouterProvider,
-  $locationProvider
-){
+function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $stateProvider
     .state('home', {
       url: '/',
       templateUrl: 'js/views/home.html',
       controller: 'loginController as vm'
-
     })
     .state('register', {
       url: '/register',
