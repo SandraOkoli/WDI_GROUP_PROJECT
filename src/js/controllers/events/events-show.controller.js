@@ -7,24 +7,36 @@ eventsShowController.$inject = [
   '$stateParams',
   '$state',
   'User',
-  'currentUserService'
+  'currentUserService',
+  'moment'
 ];
 function eventsShowController(
   Event,
   $stateParams,
   $state,
   User,
-  currentUserService
+  currentUserService,
+  $moment
 ) {
   const vm = this;
 
-  vm.currentUser = currentUserService.currentUser.id;
-  vm.events = Event.query();
-  console.log(vm);
+  console.log(
+    moment()
+      .hour(8)
+      .minute(0)
+      .second(0)
+      .toDate()
+  );
 
-  Event.get($stateParams).$promise.then(event => {
-    vm.event = event;
-  });
+  vm.events = Event.query();
+
+  //if stateParams contains an id i.e. the user is not viewing the index page
+  if ($stateParams.id) {
+    Event.get($stateParams).$promise.then(event => {
+      vm.event = event;
+      // vm.event.comments.createdAt = $moment(comment.createdAt).fromNow();
+    });
+  }
 
   vm.delete = event => {
     Event.remove({ id: event._id }).$promise.then(() => {
@@ -61,6 +73,8 @@ function eventsShowController(
   };
 
   vm.joinEvent = () => {
+    vm.currentUser = currentUserService.currentUser.id;
+
     const there = contains(vm.event.attendees, currentUserService.currentUser);
     there === true
       ? console.log('already there')

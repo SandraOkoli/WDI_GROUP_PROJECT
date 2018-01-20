@@ -34,7 +34,7 @@ function eventsNewController(
   });
 
   vm.submit = event => {
-    vm.event.location = { lat: '51.515379', lng: '-0.072513' };
+    // vm.event.location    = { lat: '51.515379', lng: '-0.072513' };
     vm.event.owner = currentUserService.currentUser.id;
 
     Event.save(event).$promise.then(() => {

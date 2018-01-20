@@ -87,8 +87,7 @@ User.create([
           }
         ],
         type: 'Birthday',
-        coverImage:
-          'http://www.sickchirpse.com/wp-content/uploads/2017/01/Trump-Baked.jpg',
+        coverImage: 'https://uticket.ie/assets/29/img/background.jpg',
         description: "Donnie boy turns 90. Let's celebrate!",
         dateTime: Date('2017-12-15T19:00:00.000Z'),
         owner: users[0].id,
