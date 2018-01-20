@@ -1,8 +1,8 @@
 <main>
 <span am-time-ago="{{ vm.stuff }}"></span>
-
+<!--
   </div>
-</div>
+</div> -->
 <div class="row">
   <div class="twelve columns">
     <img class="event-cover-image under" ng-src="{{ vm.event.coverImage }}">
@@ -16,9 +16,14 @@
       <p>{{ vm.event.description }}</p>
       <h2>{{ vm.event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</h2>
       <button class="button-primary" ng-click="vm.joinEvent()">Join event</button>
+    </div>
+  </div>
+</div>
+
 
   <input type="checkbox" id="event-trigger" class="event-trigger" />
-  <label class="menu-button"for="event-trigger"><i class="fa fa-bars" aria-hidden="true"></i> All Events</label>
+  <label class="menu-button" for="event-trigger">All Events</label>
+  <!-- <label class="menu-button" for="event-trigger"><i class="fa fa-bars" aria-hidden="true"></i> All Events</label> -->
 
 
   <div class="site-wrap">

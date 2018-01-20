@@ -16,7 +16,7 @@ function eventsShowController(
   $state,
   User,
   currentUserService,
-  $moment
+  moment
 ) {
   const vm = this;
 
