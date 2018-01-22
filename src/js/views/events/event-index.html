@@ -1,31 +1,18 @@
-<div class="accordbox">
-    <div class="tab" ng-repeat="event in vm.events">
-      <input id="tab-{{ event.name}}" type="checkbox" name="tabs">
-      <label for="tab-{{ event.name}}" class="accordlabel"><span class="event-name">{{event.name}}</span> <span class="date-title">{{ event.dateTime | amDateFormat: 'MMM Do' }}</span> </label>
-      <div class="tab-content">
-
-        <p>{{ event.dateTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</p>
-
-        <p>{{event.description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <button class="button-primary" ui-sref="eventsShow({ id: event._id })">show</button>
-
-      </div>
-    </div>
+<div class="intro-background">
+  <img class="wrap eventlogo" src="../images/outpopped.png" alt="outlogo">
+  <p>Welcome to Out, please join or<br> make an event to get started!</p>
 </div>
-
-<input type="checkbox" id="event-trigger" class="event-trigger" />
-<label class="menu-button" for="event-trigger">All Events</label>
-<!-- <label class="menu-button" for="event-trigger"><i class="fa fa-bars" aria-hidden="true"></i>All Events</label> -->
-<div class="indexbox">
-<img class="eventlogo" src="../images/outpopped.png" alt="outlogo">
-
-<p>Welcome to Out, please join or<br> make an event to get started!</p>
-<button class="button-primary">See the Events!</button><br>
-<button class="button-primary" ui-sref="eventsNew({{ main.user }})">New Event</button><br>
-<button class="button-primary" ui-sref="usersShow({{ main.user }})">Your Profile</button><br>
-<button class="button-primary" ng-click="main.logout()"> Log Out</button>
-</div>
-<div class="site-wrap">
-
-
+<div class="row">
+  <div class="twelve columns">
+    <ul>
+      <li class="inline" ng-repeat="event in vm.events track by $index">
+        <img class="index-image" ng-src="{{ event.coverImage }}">
+        <div class="index-content">
+          <h2>{{ event.dateTime | amDateFormat: 'MMM Do' }}</h2>
+          <h1>{{ event.name}}</h1>
+          <button class="show-button" ui-sref="eventsShow({ id: event._id })">View Event</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

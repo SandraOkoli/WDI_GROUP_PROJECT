@@ -3,7 +3,6 @@
 nav {
   background: linear-gradient(19deg, #282831 0%, #262626 100%);
   background-repeat: no-repeat;
-  border: 2px solid black;
   padding: 10px;
   width: 100%;
 
@@ -37,7 +36,7 @@ height: 5px;
 
 .navlogo {
   height:40px;
-  float: right;
+  float: left;
   margin-right: 20px;
   margin-top: -10px;
   cursor:pointer;
