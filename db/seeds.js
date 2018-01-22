@@ -65,7 +65,7 @@ User.create([
     console.log(`${users.length} users created!`);
     return Event.create([
       {
-        name: "Camille's 25th Birthday ",
+        name: "Camille's 25th Birthday",
         location: {
           lat: 51.553797,
           lng: -0.082898
